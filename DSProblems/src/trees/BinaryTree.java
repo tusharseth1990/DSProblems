@@ -358,16 +358,22 @@ public class BinaryTree {
 	}
 	
 	//check Two binary trees are structural identical same or not
-	public boolean identicalOrNot(Node root1,Node root2) {
-		if(root1 == null && root2 == null)
-			return true;
-		if(root1 == null || root2 == null) 
-			return false;
-		else 
-			return (identicalOrNot(root1.left,root.right) && 
-					identicalOrNot(root1.right,root2.left));
-		
-	}
+	public boolean identicalOrNot(Node root1,Node root2)
+    	{
+          if(root1 ==null && root2==null)
+           {
+            return true;
+           }
+          if(root1 ==null || root2==null)
+       	  {
+            return false;
+          }
+          else if(root1 !=null && root2!=null)
+          {
+           return (root1.data==root2.data && identicalOrNot(root1.left,root2.left) && identicalOrNot(root1.right,root2.right));
+          }
+        return false;
+    }
 	//is tree is symmetric 
 	public boolean isSymmetric(Node root) {
 	    return isMirror(root, root);
