@@ -379,6 +379,13 @@ public class BinaryTree {
 	    return isMirror(root, root);
 	}
 
+	// For two trees to be mirror images, the following
+    // three conditions must be true
+    // 1.) Their root node's key must be same
+    // 2.) left subtree of left tree and right subtree
+    // of right tree have to be mirror images
+    // 3.) right subtree of left tree and left subtree
+    // of right tree have to be mirror images
 	public boolean isMirror(Node t1, Node t2) {
 	    if (t1 == null && t2 == null) return true;
 	    if (t1 == null || t2 == null) return false;
@@ -433,6 +440,16 @@ public class BinaryTree {
 		
 		return (1+ Math.max(heightTree(root.left), heightTree(root.right)));
 	}
+	
+    //The diameter of a tree (sometimes called the width) is the number of nodes on the longest path between two end nodes
+    /*
+    The diameter of a tree T is the largest of the following quantities:
+
+the diameter of T’s left subtree.
+the diameter of T’s right subtree.
+the longest path between leaves that goes through the root of T (this can be computed from the heights of the subtrees of T)
+     */
+	
 	//diameter of binary tree
 	public int diameterBT(Node root) {
 		if(root ==null)
@@ -466,6 +483,14 @@ public class BinaryTree {
         return maxWidth; 
     } 
    
+	
+/*
+    The width of the binary tree is the number of nodes present in any level.
+    So, the level which has the maximum number of nodes will be the
+    maximum width of the binary tree.
+    To solve this problem, traverse the tree level-wise and count the nodes in each level.
+     */
+	
     /* Get width of a given level */
     int getWidth(Node node, int level)  
     { 
@@ -556,7 +581,11 @@ public class BinaryTree {
  }
  
  static int max_level = 0;
- 
+	
+ //The left view contains all nodes that are first nodes in their levels. 
+//	 A simple solution is to do level order traversal and print the first node in every level.
+	
+	
  // recursive function to print left view
  void leftViewUtil(Node node, int level)
  {
