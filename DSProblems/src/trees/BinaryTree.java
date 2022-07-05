@@ -34,16 +34,16 @@ public class BinaryTree {
 			return;
 		}else {
 			System.out.println(root.data);
-			printInOrder(root.left);
-			printInOrder(root.right);
+			printPreOrder(root.left);
+			printPreOrder(root.right);
 		}
 	}
 	public void printPostOrder(Node root) {
 		if(root == null) {
 			return;
 		}else {
-			printInOrder(root.left);
-			printInOrder(root.right);
+			printPostOrder(root.left);
+			printPostOrder(root.right);
 			System.out.println(root.data);
 		}
 	}
