@@ -1,6 +1,9 @@
 package trees;
 import java.util.*;
 
+//				1
+//			2		3
+//		  4	  5
 /////ALL QUESTIONS combined Use this for learning
 //BFS and DFSs of above Tree
 //
@@ -18,6 +21,10 @@ public class BinaryTree {
 	public BinaryTree() {
 		root =null;
 	}
+//	Time Complexity: O(N)
+//	Auxiliary Space: If we don’t consider the size of the stack for function calls then O(1)
+//		otherwise O(h) where h is the height of the tree.
+
 	public void printInOrder(Node root) {
 		if(root == null) {
 			return;
@@ -45,7 +52,14 @@ public class BinaryTree {
 			System.out.println(root.data);
 		}
 	}
-	public void printlevelOrder(Node root) {
+
+//	Time Complexity: O(N2), where N is the number of nodes in the skewed tree.
+//	So time complexity of printLevelOrder() is O(n) + O(n-1) + O(n-2) + .. + O(1) which is O(N2).
+//	Auxiliary Space:  O(N) in the worst case. For a skewed tree, printGivenLevel()
+//	uses O(n) space for the call stack.
+//	For a Balanced tree, the call stack uses O(log n) space, (i.e., the height of the balanced tree).
+
+	public void printLevelOrder(Node root) {
 		int h = height(root);
 		for(int i=1;i<=h;i++) {
 			printGivenLevel(root,i);
@@ -75,7 +89,16 @@ public class BinaryTree {
 
 		}
 	}
+
+//	Time Complexity: O(N) where n is the number of nodes in the binary tree.
+//	Auxiliary Space: O(N) where n is the number of nodes in the binary tree.
 	//Iterative level order
+
+//	Create an empty queue q and push root in q.
+//	Run While loop until q is not empty.
+//	Initialize temp_node = q.front() and print temp_node->data.
+//	Push temp_node’s children i.e. temp_node -> left then temp_node -> right to q
+//	Pop front node from q.
 	public void levelOrderUsingQueue(Node root) {
 		Queue<Node> q1 = new LinkedList<>();
 		q1.add(root);
@@ -90,6 +113,13 @@ public class BinaryTree {
 			}				
 		}
 	}
+
+//	Create an empty stack nodeStack and push root node to stack.
+//	Do the following while nodeStack is not empty.
+//	Pop an item from the stack and print it.
+//	Push right child of a popped item to stack
+//	Push left child of a popped item to stack
+
 	//iterative Pre-order traversal
 	public void preOrderTraversal(Node root) {
 		Stack<Node> s1 = new Stack<Node>();
@@ -108,7 +138,14 @@ public class BinaryTree {
 			}
 		}
 	}
-	
+//	1) Create an empty stack S.
+//  2) Initialize current node as root
+//  3) Push the current node to S and set current = current->left until current is NULL
+// 4) If current is NULL and stack is not empty then
+//	a) Pop the top item from stack.
+//	b) Print the popped item, set current = popped_item->right
+//	c) Go to step 3.
+//			5) If current is NULL and stack is empty then we are done.
 	//iterative in-order traversal 
 	public void inOrderTraversal(Node root) {
 		Stack<Node> s1 = new Stack<>();
