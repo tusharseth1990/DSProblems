@@ -15,7 +15,7 @@ public class SumInString {
                 temp=temp+ch;
             }
             else{
-                sum=sum+ Integer.parseInt(temp);
+                sum=sum + Integer.parseInt(temp);
                 temp="0";
             }
         }

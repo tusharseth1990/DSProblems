@@ -1,4 +1,4 @@
-package array;
+package array.twopointers;
 
 public class DutchNationalFlagProblem {
     //logic understanding
