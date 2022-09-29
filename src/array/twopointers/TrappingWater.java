@@ -1,4 +1,6 @@
 package array.twopointers;
+//sol1: min(L,R) - height[i]
+//sol2: L , R pointer
 
 public class TrappingWater {
 

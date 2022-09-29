@@ -24,14 +24,14 @@ public class PeakElement {
             return l;
         }
         int mid=(l+r)/2;
-        if(arr[mid]>arr[mid+1])
+        if(arr[mid] > arr[mid+1])
             return search(arr,l,mid);
         return search(arr,mid+1,r);
     }
 //search(arr,4,6); mid =5 ; search(arr,4,5) mid =4 ;search(arr,5,5)
     public static void main(String[] args) {
         int[] nums={1,2,1,3,5,6,4};
-        PeakElement peak= new PeakElement();
+        PeakElement peak = new PeakElement();
         int index= peak.findPeakElement(nums);
         System.out.println("Peak element at index "+ index + " & element is "+nums[index]);
     }
