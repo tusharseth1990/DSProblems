@@ -168,6 +168,7 @@ public class BinaryTree {
 			}
 		}
 	}
+
 	//iterative post order traversal with 2 stacks
 	public void postOrderTraversal(Node root) {
 		Stack<Node> s1 = new Stack<>();
