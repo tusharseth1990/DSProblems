@@ -3,7 +3,8 @@ package array;
 import java.util.*;
 
 public class Anagram {
-
+     //convert both strings into character array
+    //then sort it & compare each character by traversing
     boolean areAnagrams(String s1, String s2)
     {
         if(s1.length()!=s2.length())
@@ -26,6 +27,18 @@ public class Anagram {
     //nlogn + nlogn + n
     //nlogn
 
+    //if length is unequal return false
+    //convert strings to character array
+    //take 2 hashmaps,
+    // traverse 1st character array and put in hashmap
+    // traverse 2nd character array and put in hashmap
+    //And compare both hashmap are equals or not.
+
+    //another solution traverse 1st character array & put in hashmap & traverse another
+    //char array and keep deleting the existing char and in the end if it is empty then
+    //it is anagram
+
+    //n + n
     boolean areAnagramWithDS(String s1,String s2)
     {
         if(s1.length()!=s2.length())

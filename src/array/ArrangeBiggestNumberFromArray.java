@@ -11,15 +11,19 @@ public class ArrangeBiggestNumberFromArray {
 
     static void printLargest(List<String> arr)
     {
-        Collections.sort(arr, new Comparator<String>() {
-            @Override
-            public int compare(String A, String B) {
-                String AB=A+B;
-                String BA=B+A;
-                return AB.compareTo(BA)>0?-1:1;
-            }
-        });
-        System.out.println("print from iterator");
+//        Collections.sort(arr, new Comparator<String>() {
+//            @Override
+//            public int compare(String A, String B) {
+//                String AB=A+B;
+//                String BA=B+A;
+//                return AB.compareTo(BA)>0 ? -1 : 1;
+//            }
+//        });
+        arr.sort((A, B) -> {
+             String AB=A+B;
+             String BA=B+A;
+             return AB.compareTo(BA)>0 ? -1 : 1;
+         });
         Iterator it= arr.iterator();
         while(it.hasNext())
         {
@@ -34,23 +38,5 @@ public class ArrangeBiggestNumberFromArray {
         arr.add("548");
         arr.add("60");
         printLargest(arr);
-        /*System.out.println();
-        System.out.println("using Lambda");
-        arr.stream().sorted(new Comparator<String>() {
-            @Override
-            public int compare(String A, String B) {
-                String AB =A+B;
-                String BA= B+A;
-                return AB.compareTo(BA)>0?-1:1;
-            }
-        }).forEach(x->System.out.print(x));
-        System.out.println("using Lambda method 2");
-
-        arr.sort((String A, String B) -> {
-            String AB =A+B;
-            String BA= B+A;
-            return AB.compareTo(BA)>0?-1:1;
-        });
-        arr.forEach((x->System.out.print(x))); */
     }
 }

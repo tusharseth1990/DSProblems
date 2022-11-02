@@ -6,7 +6,7 @@ public class KthLargestElement {
 
     int findKthLargestElement(int[] arr, int k)
     {
-        PriorityQueue<Integer> heap=new PriorityQueue<>((n1,n2)->n1-n2);
+        PriorityQueue<Integer> heap= new PriorityQueue<>((n1,n2)->n1-n2);
         for(int i:arr)
         {
             heap.add(i);
