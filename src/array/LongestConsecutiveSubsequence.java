@@ -23,7 +23,7 @@ public class LongestConsecutiveSubsequence {
             num_set.add(num);
         }
 
-        int longestStreak = 0;
+        int longestStreak = 1;
 
         for (int num : num_set) {
             if (!num_set.contains(num-1)) {
@@ -40,5 +40,11 @@ public class LongestConsecutiveSubsequence {
         }
 
         return longestStreak;
+    }
+
+    public static void main(String[] args) {
+        LongestConsecutiveSubsequence l = new LongestConsecutiveSubsequence();
+        int[] a = new int[]{0, 3, 7, 2, 5, 8, 4, 6, 0, 1};
+        System.out.println(l.longestConsecutive(a));
     }
 }
