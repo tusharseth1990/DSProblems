@@ -1,4 +1,4 @@
-package array;
+package array.tricky;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package array;
+package array.hashing;
 
 import java.util.*;
 //Insert Delete GetRandom O(1)

@@ -1,6 +1,4 @@
-package array;
-
-import java.util.Locale;
+package array.tricky;
 
 public class CountVowels {
 

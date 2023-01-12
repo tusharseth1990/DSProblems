@@ -1,25 +1,28 @@
-package array;
+package array.hashing;
 
 import java.util.*;
 
 public class GroupAnagram {
+//time complexities : NKlogK
+    //space complexities: NK
 
-    List<List<String>> groupAnagrams(String[] str){
+    List<List<String>> groupAnagrams(String[] str) {
 
-        if(str.length == 0) return new ArrayList<>();
-        HashMap<String,List<String>> hm = new HashMap<>();
+        if (str.length == 0) return new ArrayList<>();
+        HashMap<String, List<String>> hm = new HashMap<>();
         Arrays.stream(str).forEach(s -> {
             char[] ch = s.toCharArray();
             Arrays.sort(ch);
             String key = String.valueOf(ch);
-            if(!hm.containsKey(key)) {
+            if (!hm.containsKey(key)) {
                 hm.put(key, new ArrayList<>());
             }
             hm.get(key).add(s);
         });
         return new ArrayList<>(hm.values());
-        }
-
+    }
+    //space complexities: NK
+    //time complexities: NK
     public List<List<String>> groupAnagram(String[] strs) {
         if (strs.length == 0) return new ArrayList();
         Map<String, List> ans = new HashMap<String, List>();
@@ -42,8 +45,8 @@ public class GroupAnagram {
 
 
     public static void main(String[] args) {
-        GroupAnagram gp= new GroupAnagram();
-        String[] str={"eat","tea","tan","ate","nat","bat"};
+        GroupAnagram gp = new GroupAnagram();
+        String[] str = {"eat", "tea", "tan", "ate", "nat", "bat"};
         System.out.println(gp.groupAnagrams(str));
     }
 }

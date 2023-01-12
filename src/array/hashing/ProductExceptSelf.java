@@ -1,4 +1,4 @@
-package array;
+package array.hashing;
 
 public class ProductExceptSelf {
 

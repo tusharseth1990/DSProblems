@@ -1,4 +1,4 @@
-package array.binarysearchApplications;
+package array.binarysearch;
 
 public class FirstLastInSortedArray {
 

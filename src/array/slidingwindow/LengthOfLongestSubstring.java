@@ -10,7 +10,7 @@ public class LengthOfLongestSubstring {
         int ans = 0;
         for (int right = 0; right < s.length(); right++) {
             while (hs.contains(s.charAt(right))){
-                hs.remove(s.charAt(right));
+                hs.remove(s.charAt(left));
                 left = left + 1;
             }
             hs.add(s.charAt(right));

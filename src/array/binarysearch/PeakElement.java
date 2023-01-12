@@ -1,4 +1,4 @@
-package array;
+package array.binarysearch;
 
 public class PeakElement {
     /*A peak element is an element that is strictly greater than its neighbors.

@@ -1,4 +1,4 @@
-package array;
+package array.tricky;
 
 public class RearrangeArrayAlternatively {
 
