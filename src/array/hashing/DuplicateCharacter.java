@@ -8,20 +8,17 @@ public class DuplicateCharacter {
 
     void printDuplicateCharacter(String s)
     {
-        char ch[]=s.toLowerCase().toCharArray();
+        char[] ch=s.toLowerCase().toCharArray();
         LinkedHashMap<Character,Integer> hm = new LinkedHashMap<>();
-        for(int i=0;i<ch.length;i++)
-        {
-            if(hm.containsKey(ch[i]))
-            {
-                hm.put(ch[i],hm.get(ch[i])+1);
-            }
-            else{
-                hm.put(ch[i],1);
+        for (char c : ch) {
+            if (hm.containsKey(c)) {
+                hm.put(c, hm.get(c) + 1);
+            } else {
+                hm.put(c, 1);
             }
         }
         for(Entry<Character,Integer> en:hm.entrySet())
-        {
+            {
             if(en.getValue()>1)
             {
                 System.out.println(en.getKey() + ":" + en.getValue());

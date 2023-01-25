@@ -38,7 +38,7 @@ public class Anagram {
     //char array and keep deleting the existing char and in the end if it is empty then
     //it is anagram
 
-    //n + n
+    //n
     boolean areAnagramWithDS(String s1,String s2)
     {
         if(s1.length()!=s2.length())

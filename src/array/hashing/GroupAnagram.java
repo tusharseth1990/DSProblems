@@ -47,6 +47,6 @@ public class GroupAnagram {
     public static void main(String[] args) {
         GroupAnagram gp = new GroupAnagram();
         String[] str = {"eat", "tea", "tan", "ate", "nat", "bat"};
-        System.out.println(gp.groupAnagrams(str));
+        System.out.println(gp.groupAnagram(str));
     }
 }

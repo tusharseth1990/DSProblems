@@ -11,7 +11,7 @@ public class ContainsDuplicate {
 
     private static boolean findDuplicates(int[] a) {
         Set<Integer> s1 = new HashSet<>();
-        for (int i = 0; i < a.length-1; i++) {
+        for (int i = 0; i < a.length; i++) {
             if(s1.contains(a[i])){
                 return true;
             }
@@ -20,8 +20,10 @@ public class ContainsDuplicate {
         return false;
     }
     public static void main(String[] args) {
-        int[] a = {1,1,1,3,3,4,3,2,4,2};
+//        int[] a = {1,1,1,3,3,4,3,2,4,2};
+        int[] a = {1,3,4,2,2};
         boolean b = findDuplicates(a);
+        System.out.println(b);
     }
 
 
