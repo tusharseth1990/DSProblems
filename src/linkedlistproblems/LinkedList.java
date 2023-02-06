@@ -20,18 +20,23 @@ public class LinkedList {
 		n.next = head;
 		head = n;
 	}
-	
+
 	public void append(int x) {
-		Node n = new Node(x);
-		if(head==null)
-			head = n;
-		Node temp = head;
-		while(temp.next!=null) {
-			temp = temp.next;
+		Node new_node = new Node(x);
+		if(head == null){
+			head = new Node(x);
+			return;
 		}
-		temp.next=n;
+		new_node.next = null;
+
+		Node last = head;
+		while(last.next !=null){
+			last = last.next;
+		}
+		last.next = new_node;
+		return;
 	}
-	
+
 	public void insertAfter(int x,Node prev) {
 		if (prev == null) 
 	    { 
@@ -40,8 +45,7 @@ public class LinkedList {
 	    } 
 		Node new_node = new Node(x); 
 	    new_node.next = prev.next; 
-	    prev.next = new_node; 
-		
+	    prev.next = new_node;
 	}
 	
 	public void deleteNode(int k) {

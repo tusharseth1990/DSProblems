@@ -1,7 +1,7 @@
-package array.slidingwindow;
+package array.twopointers;
 
 public class BestTimeToBuySellStock {
-
+//Two pointer solution
 
     public int maxProfitSol1(int[] prices) {
         int left = 0;
