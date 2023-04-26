@@ -6,7 +6,7 @@ public class StackArray {
 	
 	int top;
 	
-	int a[] = new int[MAX];
+	int[] a = new int[MAX];
 	
 	StackArray() {
 		top = -1;

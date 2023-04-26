@@ -43,7 +43,6 @@ public class GroupAnagram {
         return new ArrayList(ans.values());
     }
 
-
     public static void main(String[] args) {
         GroupAnagram gp = new GroupAnagram();
         String[] str = {"eat", "tea", "tan", "ate", "nat", "bat"};

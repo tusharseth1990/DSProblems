@@ -7,12 +7,12 @@ public class QueueUsing2Stacks {
     static class Queue { 
         Stack<Integer> stack1; 
         Stack<Integer> stack2; 
-    } 
+    }
   
     /* Function to push an item to stack*/
     static void push(Stack<Integer> top_ref, int new_data) 
     { 
-        // Push the data onto the stack 
+        // Push the data onto the stack xs
         top_ref.push(new_data); 
     } 
   

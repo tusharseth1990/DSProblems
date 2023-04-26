@@ -2,7 +2,6 @@ package array.hashing;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.Map;
 
 public class FirstRepeatingInteger {
 

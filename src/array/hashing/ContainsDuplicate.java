@@ -1,5 +1,6 @@
 package array.hashing;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,6 +20,7 @@ public class ContainsDuplicate {
         }
         return false;
     }
+
     public static void main(String[] args) {
 //        int[] a = {1,1,1,3,3,4,3,2,4,2};
         int[] a = {1,3,4,2,2};
