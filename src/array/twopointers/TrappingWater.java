@@ -36,7 +36,7 @@ public class TrappingWater {
 
         int result = 0;
 
-        while(left <=right){
+        while(left <= right){
 
             if(r_max<=l_max){
                 result = result + Math.max(0,r_max - height[right]);

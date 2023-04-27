@@ -13,7 +13,7 @@ public class ThreeSum {
         Arrays.sort(arr);
         List<List<Integer>> response = new ArrayList<>();
         for (int i = 0; i < arr.length && arr[i] <= 0; i++) {
-            if(i ==0 || arr[i-1] != arr[i]){
+            if(i ==0 || arr[i-1] != arr[i]) {
                 twoSumII(arr,i,response);
             }
         }

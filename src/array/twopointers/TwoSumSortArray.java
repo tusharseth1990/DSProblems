@@ -33,6 +33,26 @@ public class TwoSumSortArray {
          }
          return new int[]{};
      }
+ // better efficient sol.
+    public int[] twoSumSol(int[] numbers, int target) {
+        int ans[]=new int[2];
+        int i=0;
+        int j=numbers.length-1;
+
+        while(i<j){
+            if(numbers[i]+numbers[j]==target){
+                ans[0]=i+1;
+                ans[1]=j+1;
+                break;
+            }
+            else if(numbers[i]+numbers[j]>target)
+                j--;
+            else if(numbers[i]+numbers[j]<target)
+                i++;
+        }
+        return ans;
+    }
+
     public static void main(String[] args) {
          int[] a = {1,3,4,5,7,10,11};
         TwoSumSortArray twoSumSortArray = new TwoSumSortArray();

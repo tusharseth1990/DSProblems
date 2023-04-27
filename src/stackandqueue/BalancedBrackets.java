@@ -10,7 +10,8 @@ public class BalancedBrackets {
 	  
     // function to check if brackets are balanced 
     static boolean areBracketsBalanced(String expr) 
-    { 
+    {
+        if (expr.length() % 2 != 0) return false;
         // Using ArrayDeque is faster than using Stack class 
         Deque<Character> stack 
             = new ArrayDeque<>(); 
@@ -56,6 +57,8 @@ public class BalancedBrackets {
         // Check Empty Stack 
         return (stack.isEmpty()); 
     }
+
+
 
 
     public boolean isValid(String s) {
