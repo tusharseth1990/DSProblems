@@ -2,7 +2,7 @@ package array.twopointers;
 
 public class BestTimeToBuySellStock {
 //Two pointer solution
-
+//neet code solution
     public int maxProfitSol1(int[] prices) {
         int left = 0;
         int right = 1;
