@@ -15,11 +15,12 @@ package array.binarysearch;
 public class KokoEatingBanana {
     public int minEatingSpeed(int[] piles, int h) {
         // Initalize the left and right boundaries
+        //finding the range in this case L...R = 1...11
         int left = 1, right = 1;
         for (int pile : piles) {
             right = Math.max(right, pile);
         }
-
+    //now applying binary search on the above L..R range
         while (left < right) {
             // Get the middle index between left and right boundary indexes.
             // hourSpent stands for the total hour Koko spends.
