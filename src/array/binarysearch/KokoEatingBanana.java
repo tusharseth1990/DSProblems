@@ -21,6 +21,7 @@ public class KokoEatingBanana {
             right = Math.max(right, pile);
         }
     //now applying binary search on the above L..R range
+
         while (left < right) {
             // Get the middle index between left and right boundary indexes.
             // hourSpent stands for the total hour Koko spends.
