@@ -141,21 +141,19 @@ public class LinkedList {
 //	 Traverse the list again. For every visited node, pop a node from stack and compare data of popped node with currently visited node.
 //	 If all nodes matched, then return true, else false.
 	 boolean isPalindrome(Node head) 
-	    { 
-	  
+	    {
 	        Node slow = head; 
 	        boolean ispalin = true; 
-	        Stack<Integer> stack = new Stack<Integer>(); 
+	        Stack<Integer> stack = new Stack<>();
 	  
 	        while (slow != null) { 
 	            stack.push(slow.data); 
 	            slow = slow.next; 
 	        } 
 	  
-	        while (head != null) { 
-	  
+	        while (head != null) {
 	            int i = stack.pop(); 
-	            if (head.data == i) { 
+	            if (head.data == i) {
 	                ispalin = true; 
 	            } 
 	            else { 
@@ -267,11 +265,11 @@ public class LinkedList {
 	     /* This function detects and counts loop  
 	     nodes in the list. If loop is not there  
 	     in then returns 0 */
-	      int countNodesinLoop( Node list)  
+	      int countNodesInLoop(Node list)
 	     {  
 	         Node slow_p = list, fast_p = list;  
 	       
-	         while (slow_p !=null && fast_p!=null && fast_p.next!=null)  
+	         while (fast_p!=null && fast_p.next!=null)
 	         {  
 	             slow_p = slow_p.next;  
 	             fast_p = fast_p.next.next;  
@@ -282,7 +280,7 @@ public class LinkedList {
 	                 return countNodes(slow_p);  
 	         }  
 	       
-	         /* Return 0 to indeciate that ther is no loop*/
+	         /* Return 0 to indeciate that there is no loop*/
 	         return 0;  
 	     } 
 	      
@@ -445,8 +443,8 @@ public class LinkedList {
 	            prev = current; 
 	            current = next; 
 	        } 
-	        node = prev; 
-	        return node; 
+
+	        return prev;
 	    } 
 	    
 	    Node reverseKNodes(Node head, int k)

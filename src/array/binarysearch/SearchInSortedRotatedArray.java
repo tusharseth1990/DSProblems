@@ -1,6 +1,6 @@
 package array.binarysearch;
 
-public class SearchInsortedRotatedArray {
+public class SearchInSortedRotatedArray {
 
     public int search(int[] nums, int target) {
         int start = 0, end = nums.length - 1;
