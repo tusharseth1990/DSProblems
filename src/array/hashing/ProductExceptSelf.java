@@ -7,7 +7,7 @@ public class ProductExceptSelf {
         int n = nums.length;
         int[] L= new int[n];
         int[] R= new int[n];
-        int[] answer= new int[n];
+        int[] answer = new int[n];
 
         L[0]=1;
         for(int i=1;i<n;i++)
