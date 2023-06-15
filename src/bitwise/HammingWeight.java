@@ -22,6 +22,9 @@ public class HammingWeight {
         return count;
     }
 
+
+    // logic: number & 1
+    //then shift right
     // you need to treat n as an unsigned value
     public int hammingWeightMethod2(int n) {
         int count = 0;
