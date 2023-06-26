@@ -80,7 +80,6 @@ public class BinaryTree {
         } else {
             return (rh + 1);
         }
-
     }
 
     public void printGivenLevel(Node root, int level) {
