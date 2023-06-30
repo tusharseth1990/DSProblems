@@ -482,7 +482,7 @@ public class LinkedList {
 	    public static Node YNode(Node n1, Node n2) 
 	    { 
 	        // define hashset 
-	        HashSet<Node> hs = new HashSet<Node>(); 
+	        HashSet<Node> hs = new HashSet<>();
 	        while (n1 != null) { 
 	            hs.add(n1); 
 	            n1 = n1.next; 

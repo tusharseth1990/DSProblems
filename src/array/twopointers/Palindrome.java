@@ -1,6 +1,39 @@
 package array.twopointers;
 
 public class Palindrome {
+/*
+https://leetcode.com/problems/valid-palindrome/
+A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
+
+Given a string s, return true if it is a palindrome, or false otherwise.
+
+Example 1:
+Input: s = "A man, a plan, a canal: Panama"
+Output: true
+Explanation: "amanaplanacanalpanama" is a palindrome.
+ */
+    public boolean isPalindromeEasy(String str) {
+
+        if(str=="" || str.isEmpty() || str.trim()=="" )
+        {
+            return true;
+        }
+        str=str.replaceAll("[^a-zA-Z0-9]","").toLowerCase();
+        if(str=="" || str.isEmpty() || str.trim()=="" )
+        {
+            return true;
+        }
+        char ch[]=str.toCharArray();
+        int left=0, right = ch.length-1;
+        char temp;
+        for(left=0;left<right;left++,right--)
+        {
+            temp=ch[left];
+            ch[left]=ch[right];
+            ch[right]=temp;
+        }
+        return (str.equals(String.valueOf(ch)));
+    }
 
     public boolean isPalindrome(String s) {
         int i = 0;

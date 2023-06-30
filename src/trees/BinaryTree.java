@@ -24,7 +24,7 @@ public class BinaryTree {
         root = null;
     }
 //	Time Complexity: O(N)
-//	Auxiliary Space: If we don’t consider the size of the stack for function calls then O(1)
+//	Space complexity: If we don’t consider the size of the stack for function calls then O(1)
 //		otherwise O(h) where h is the height of the tree.
 
     public void printInOrder(Node root) {
