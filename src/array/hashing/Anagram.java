@@ -39,8 +39,7 @@ public class Anagram {
     //it is anagram
 
     //n
-    boolean areAnagramWithDS(String s1,String s2)
-    {
+    boolean areAnagramWithDS(String s1,String s2)  {
         if(s1.length()!=s2.length())
         {
             return false;

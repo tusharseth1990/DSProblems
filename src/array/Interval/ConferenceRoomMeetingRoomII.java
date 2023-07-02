@@ -1,23 +1,15 @@
 package array.Interval;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.PriorityQueue;
 
 public class ConferenceRoomMeetingRoomII {
 
-    /**
-     * Definition of Interval:
-     */
 
-    public class Interval {
-        int start, end;
-        Interval(int start, int end) {
-            this.start = start;
-            this.end = end;
-        }
-    }
-    public int minMeetingRooms(List<Interval> intervals) {
+
+    public int minMeetingRooms1(List<Interval> intervals) {
         if (intervals.size() == 0) {
             return 0;
         }
@@ -53,7 +45,7 @@ public class ConferenceRoomMeetingRoomII {
         return res;
     }
 
-    public int minMeetingRooms(Interval[] intervals) {
+    public int minMeetingRooms2(Interval[] intervals) {
         Arrays.sort(intervals,(a,b)->(a.start-b.start));
         PriorityQueue<Interval> pq=new PriorityQueue<>((a, b)->(a.end-b.end));
         for(Interval i:intervals){
@@ -63,6 +55,20 @@ public class ConferenceRoomMeetingRoomII {
             pq.add(i);
         }
         return pq.size();
+    }
+
+    public static void main(String[] args) {
+        int[][] intervals={{0,30},{5,10},{15,20}};
+        List<Interval> ls = new ArrayList<>();
+        Interval i1= new Interval(0,30);
+        ls.add(i1);
+        Interval i2 =new Interval(5,10);
+        ls.add(i2);
+        Interval i3 =new Interval(15,20);
+        ls.add(i3);
+
+        ConferenceRoomMeetingRoomII m= new ConferenceRoomMeetingRoomII();
+        System.out.println(m.minMeetingRooms1(ls));
     }
 
 }
