@@ -54,11 +54,9 @@ public class Anagram {
             {
                 hm1.put(ch1[i],hm1.get(ch1[i])+1);
             }
-            else{
-                hm1.put(ch1[i],1);
+            else {
+                hm1.put(ch1[i], 1);
             }
-
-
 
             if(hm2.containsKey(ch2[i]))
             {
