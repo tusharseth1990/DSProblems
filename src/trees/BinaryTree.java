@@ -177,10 +177,18 @@ public class BinaryTree {
     }
 
     //iterative post order traversal with 2 stacks
+    //1 2 3 4 5
+                        //1
+
+                //2             3
+
+        //4             5
+
+    //Left Right Data
+    //4 5 2 3 1
     public void postOrderTraversal(Node root) {
         Stack<Node> s1 = new Stack<>();
         Stack<Node> s2 = new Stack<>();
-
         if (root == null)
             return;
         else {
@@ -410,8 +418,8 @@ public class BinaryTree {
         if (root1 == null || root2 == null)
             return false;
         else
-            return (identicalOrNot(root1.left, root.right) &&
-                    identicalOrNot(root1.right, root2.left));
+            return (identicalOrNot(root1.left, root2.left) &&
+                    identicalOrNot(root1.right, root2.right));
 
     }
 
@@ -552,6 +560,11 @@ public class BinaryTree {
             return getWidth(node.left, level - 1)
                     + getWidth(node.right, level - 1);
         return 0;
+    }
+
+    public int maxDepth(Node root) {
+        if (root == null) return 0;
+        return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
     }
 
     //TO-DO min. depth of a BT

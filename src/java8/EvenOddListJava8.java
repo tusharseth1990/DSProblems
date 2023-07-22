@@ -11,6 +11,9 @@ public class EvenOddListJava8 {
         //sol1
         List<Integer> oddList = list.stream().filter(integer -> integer %2 != 0).collect(Collectors.toList());
         List<Integer> evenList = list.stream().filter(integer -> integer %2 == 0).collect(Collectors.toList());
+        //sort & even numbers
+        System.out.println("Even sorted numbers ");
+        list.stream().filter(integer -> integer%2==0).sorted().forEach(System.out::println);
 
         //sol2
         Map<Boolean,List<Integer>> map = list.stream().collect(Collectors.partitioningBy(x -> x%2 == 0));
@@ -23,6 +26,8 @@ public class EvenOddListJava8 {
             }
             booleanListEntry.getValue().forEach(System.out::println);
         });
+
+
     }
 
     public static void main(String[] args) {

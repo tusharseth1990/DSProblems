@@ -24,7 +24,7 @@ Explanation: "amanaplanacanalpanama" is a palindrome.
             return true;
         }
         char ch[]=str.toCharArray();
-        int left=0, right = ch.length-1;
+        int left, right = ch.length-1;
         char temp;
         for(left=0;left<right;left++,right--)
         {

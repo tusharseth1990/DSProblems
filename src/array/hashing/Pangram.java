@@ -17,6 +17,24 @@ public class Pangram {
 		return seen.size() == 26;
 	}
 
+	public boolean checkIfPangramUsingHashing(String sentence)
+	{
+		boolean[] chars= new boolean[26];
+		for(char ch:sentence.toCharArray())
+		{
+			chars[ch='a']=true;
+		}
+
+		for(boolean status:chars)
+		{
+			if(!status)
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+
 	 public static boolean checkPangram(String str) 
 	    { 
 	        // Create a hash table to mark the 

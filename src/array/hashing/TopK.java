@@ -1,6 +1,16 @@
 package array.hashing;
 
 import java.util.*;
+//https://leetcode.com/problems/top-k-frequent-elements/
+/*
+Given an integer array nums and an integer k, return the k most frequent elements.
+You may return the answer in any order.
+
+Example 1:
+Input: nums = [1,1,1,2,2,3], k = 2
+Output: [1,2]
+ */
+
 
 public class TopK {
 
@@ -22,8 +32,11 @@ public class TopK {
         }
 
         // init heap 'the less frequent element first'
-        Queue<Integer> heap = new PriorityQueue<>(
-                (n1, n2) -> count.get(n1) - count.get(n2));
+//        Queue<Integer> heap = new PriorityQueue<>(
+//                (n1, n2) -> count.get(n1) - count.get(n2));
+
+        Queue<Integer> heap = new PriorityQueue<>(Comparator.reverseOrder());
+
 
         // 2. keep k top frequent elements in the heap
         // O(N log k) < O(N log N) time
@@ -31,6 +44,8 @@ public class TopK {
             heap.add(n);
             if (heap.size() > k) heap.poll();
         }
+        System.out.println("after heap");
+        heap.stream().forEach(integer -> System.out.println(integer));
 
         // 3. build an output array
         // O(k log k) time
@@ -71,6 +86,10 @@ public class TopK {
     }
 
     public static void main(String[] args) {
+        int[] arr= {1,1,1,2,2,2,3,3,4,5,6};
         TopK topK= new TopK();
+        int[] ans= topK.topKFrequentSol1(arr,2);
+        System.out.println("output");
+        Arrays.stream(ans).forEach(value -> System.out.println(value));
        }
 }
