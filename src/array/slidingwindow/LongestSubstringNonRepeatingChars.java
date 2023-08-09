@@ -1,8 +1,6 @@
 package array.slidingwindow;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 //https://leetcode.com/problems/longest-substring-without-repeating-characters/
 /*
 Given a string s, find the length of the longest
@@ -21,7 +19,7 @@ Explanation: The answer is "b", with the length of 1.
 sliding window
  */
 
-public class LengthOfLongestSubstring {
+public class LongestSubstringNonRepeatingChars {
 //neet code solution
 // sliding window
     private static int findLengthOfLongSubstring(String s) {

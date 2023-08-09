@@ -65,6 +65,8 @@ public class Anagram {
             else{
                 hm2.put(ch2[i],1);
             }
+
+           // hm2.put(ch2[i],hm2.getOrDefault(ch2[i],0)+1);
         }
         if(hm1.equals(hm2))
         {

@@ -35,7 +35,7 @@ public class TopK {
 //        Queue<Integer> heap = new PriorityQueue<>(
 //                (n1, n2) -> count.get(n1) - count.get(n2));
 
-        Queue<Integer> heap = new PriorityQueue<>(Comparator.reverseOrder());
+        Queue<Integer> heap = new PriorityQueue<>();
 
 
         // 2. keep k top frequent elements in the heap
@@ -56,7 +56,8 @@ public class TopK {
         return top;
     }
 
-
+//i(count)  =  1, 2, 3
+//Numbers   =  3 , 2, 1
 
     public List<Integer> topKFrequent(int[] nums, int k) {
 

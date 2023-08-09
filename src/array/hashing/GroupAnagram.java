@@ -2,6 +2,8 @@ package array.hashing;
 
 import java.util.*;
 
+//Input: strs = ["eat","tea","tan","ate","nat","bat"]
+//Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
 public class GroupAnagram {
 //time complexities : NKlogK
     //space complexities: NK
@@ -21,11 +23,15 @@ public class GroupAnagram {
         });
         return new ArrayList<>(hm.values());
     }
+
     //space complexities: NK
     //time complexities: NK
+
+    //#1#2#2#3
+
     public List<List<String>> groupAnagram(String[] strs) {
         if (strs.length == 0) return new ArrayList();
-        Map<String, List> ans = new HashMap<String, List>();
+        Map<String, List<String>> ans = new HashMap<>();
         int[] count = new int[26];
         for (String s : strs) {
             Arrays.fill(count, 0);

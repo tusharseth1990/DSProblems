@@ -1,6 +1,6 @@
 package array.twopointers;
 //sol1: min(L,R) - height[i]
-//sol2: L , R pointer
+//sol2: L , R pointer using maxL , maxR shift smaller one Min(MaxL,MaxR)
 
 public class TrappingWater {
 

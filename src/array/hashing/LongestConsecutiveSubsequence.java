@@ -18,7 +18,7 @@ Output: 9
 public class LongestConsecutiveSubsequence {
 
     public int longestConsecutive(int[] nums) {
-        Set<Integer> num_set = new HashSet<Integer>();
+        Set<Integer> num_set = new HashSet<>();
         for (int num : nums) {
             num_set.add(num);
         }

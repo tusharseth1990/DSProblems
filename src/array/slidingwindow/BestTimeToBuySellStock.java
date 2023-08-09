@@ -1,8 +1,10 @@
-package array.twopointers;
+package array.slidingwindow;
 
 public class BestTimeToBuySellStock {
 //Two pointer solution
 //neet code solution
+
+    //L at 0th index , R at 1st index , calc maxProfit
     public int maxProfitSol1(int[] prices) {
         int left = 0;
         int right = 1;

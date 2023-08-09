@@ -5,7 +5,6 @@ import java.util.Set;
 
 public class SodukoValid {
 
-
         public static boolean isValidSudoku(char[][] board) {
             //neetcode solution, slightly modified
 
