@@ -9,6 +9,8 @@ import java.util.Set;
 //Input: nums = [1,1,1,3,3,4,3,2,4,2]
 //Output: true
 public class ContainsDuplicate {
+//Time Complexity = n
+    //Space Complexity = n
 
     private static boolean findDuplicates(int[] a) {
         Set<Integer> s1 = new HashSet<>();

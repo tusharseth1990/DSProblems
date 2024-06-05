@@ -130,7 +130,7 @@ public class BinaryTree {
 
     //iterative Pre-order traversal
     public void preOrderTraversal(Node root) {
-        Stack<Node> s1 = new Stack<Node>();
+        Stack<Node> s1 = new Stack<>();
         if (root == null)
             return;
         s1.push(root);

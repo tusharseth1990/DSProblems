@@ -14,6 +14,7 @@ public class BestTimeToBuySellStock {
                 maxProfit = Math.max(maxProfit, prices[right] - prices[left]);
                 right++;
             } else {
+                //when L > R then this flow
                 left = right;
                 right++;
             }
