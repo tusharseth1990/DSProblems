@@ -23,7 +23,7 @@ public class TwoSum {
              }
              hm.put(num[i],i);
          }
-         return null;
+         return new int[] {};
     }
     public static void main(String[] args) {
         int[] arr = {4,-2,5,0,6,3,2,7};

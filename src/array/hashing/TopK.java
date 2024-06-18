@@ -32,10 +32,9 @@ public class TopK {
         }
 
         // init heap 'the less frequent element first'
-//        Queue<Integer> heap = new PriorityQueue<>(
-//                (n1, n2) -> count.get(n1) - count.get(n2));
+        Queue<Integer> heap = new PriorityQueue<>(
+                (n1, n2) -> count.get(n1) - count.get(n2));
 
-        Queue<Integer> heap = new PriorityQueue<>();
 
 
         // 2. keep k top frequent elements in the heap
@@ -61,7 +60,7 @@ public class TopK {
 
     public List<Integer> topKFrequent(int[] nums, int k) {
 
-        List<Integer>[] bucket = new List[nums.length + 1];
+        List<Integer>[] bucket = new ArrayList[nums.length + 1];
         Map<Integer, Integer> frequencyMap = new HashMap<Integer, Integer>();
 
         for (int n : nums) {
@@ -83,14 +82,59 @@ public class TopK {
                 res.addAll(bucket[pos]);
             }
         }
-        return res;
+        return res.subList(0,k);
+
+//        int[] ans = new int[k];
+//        int pos = 0;
+//        for (int i = bucket.length - 1; i >= 0; i--) {
+//            if (bucket[i] != null) {
+//                for (int j = 0; j < bucket[i].size() && pos < k; j++) {
+//                    ans[pos] = bucket[i].get(j);
+//                    pos++;
+//                }
+//            }
+//        }
+//        return ans;
     }
+
+    public int[] topKFrequentII(int[] nums, int k) {
+
+        List<Integer>[] bucket = new ArrayList[nums.length + 1];
+        Map<Integer, Integer> frequencyMap = new HashMap<Integer, Integer>();
+
+        for (int n : nums) {
+            frequencyMap.put(n, frequencyMap.getOrDefault(n, 0) + 1);
+        }
+
+        for (int key : frequencyMap.keySet()) {
+            int frequency = frequencyMap.get(key);
+            if (bucket[frequency] == null) {
+                bucket[frequency] = new ArrayList<>();
+            }
+            bucket[frequency].add(key);
+        }
+
+        int[] ans = new int[k];
+        int pos = 0;
+        for (int i = bucket.length - 1; i >= 0; i--) {
+            if (bucket[i] != null) {
+                for (int j = 0; j < bucket[i].size() && pos < k; j++) {
+                    ans[pos] = bucket[i].get(j);
+                    pos++;
+                }
+            }
+        }
+        return ans;
+    }
+
 
     public static void main(String[] args) {
         int[] arr= {1,1,1,2,2,2,3,3,4,5,6};
         TopK topK= new TopK();
         int[] ans= topK.topKFrequentSol1(arr,2);
         System.out.println("output");
-        Arrays.stream(ans).forEach(value -> System.out.println(value));
-       }
+//        Arrays.stream(ans).forEach(value -> System.out.println(value));
+        System.out.println(topK.topKFrequent(arr, 2));
+
+    }
 }
