@@ -31,7 +31,7 @@ Explanation: Replace the two 'A's with two 'B's or vice versa.
      int res = 0;
      int max = 0;
 
-     // The left pointer for the sliding window is l AND r is the
+     // The left pointer for the sliding window is l AND  r is the
      // right pointer
      int l = 0;
      for (int r = 0; r < s.length(); r++) {

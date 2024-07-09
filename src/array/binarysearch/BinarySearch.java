@@ -24,7 +24,7 @@ public class BinarySearch {
 
     int binarySearchIterative(int arr[], int x)
     {
-       int l=0, r= arr.length;
+       int l=0, r= arr.length-1;
        while(l<=r)
        {
            int mid=l+(r-l)/2;

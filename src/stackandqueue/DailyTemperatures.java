@@ -2,7 +2,7 @@ package stackandqueue;
 
 import java.util.Stack;
 
-public class Temperatures {
+public class DailyTemperatures {
     public int[] dailyTemperatures(int[] temperatures) {
         int[] ans = new int[temperatures.length];
         Stack<Integer> stack = new Stack<>();

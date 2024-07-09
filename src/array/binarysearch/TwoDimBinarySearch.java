@@ -2,7 +2,7 @@ package array.binarysearch;
 
 public class TwoDimBinarySearch {
 
-    //    Time: O(log(mn)) | Space: O(1)
+    //    Time: O(log(mn)) or (log m + log n) | Space: O(1)
     public boolean searchMatrix2(int[][] matrix, int target) {
         if(matrix.length == 0) return false;
 
