@@ -34,7 +34,6 @@ public class TwoSumSortArray {
          return new int[]{};
      }
 
-
     public static void main(String[] args) {
          int[] a = {1,3,4,5,7,10,11};
         TwoSumSortArray twoSumSortArray = new TwoSumSortArray();
