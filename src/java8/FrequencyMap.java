@@ -1,13 +1,11 @@
 package java8;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class FrequencyMap {
+
 
     private void characterCountMap(String str) {
         //frequency map with maintaining order
@@ -37,13 +35,18 @@ public class FrequencyMap {
     }
 
 
+    private static void characterCountEasy(String str){
+        var countMap = str.replaceAll("\\s", "").chars().mapToObj(value -> (char) value).collect(Collectors.groupingBy(character -> character, Collectors.counting()));
+        System.out.println(countMap);
+    }
+
     public static void main(String[] args) {
         FrequencyMap frequencyMap = new FrequencyMap();
         //frequencyMap.characterCountMap("Java Concept Of The Day");
         //characterCountMapWithOrder("Java Concept Of The Day");
         characterCountMapWithMostFrequencyOrder("Java Concept Of The Day");
+        characterCountEasy("Java Concept Of The Day");
     }
-
 
 
 

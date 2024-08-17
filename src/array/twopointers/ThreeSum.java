@@ -6,37 +6,56 @@ import java.util.*;
 // such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
 //
 //        Notice that the solution set must not contain duplicate triplets.
+//n logn + n2 = n2
 public class ThreeSum {
 
-    List<List<Integer>> threeSum(int[] arr){
-        Arrays.sort(arr);
-        List<List<Integer>> response = new ArrayList<>();
-        for (int i = 0; i < arr.length && arr[i] <= 0; i++) {
-            if(i ==0 || arr[i-1] != arr[i]) {
-                twoSumII(arr,i,response);
+
+    public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> ans = new ArrayList<>();
+
+        // Sort the array
+        Arrays.sort(nums);
+
+        for (int i = 0; i < nums.length - 2; i++) {
+            // Skip duplicate elements for i
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue;
+            }
+
+            int j = i + 1;
+            int k = nums.length - 1;
+
+            while (j < k) {
+                int sum = nums[i] + nums[j] + nums[k];
+
+                if (sum == 0) {
+                    // Found a triplet with zero sum
+                    ans.add(Arrays.asList(nums[i], nums[j], nums[k]));
+
+                    // Skip duplicate elements for j
+                    while (j < k && nums[j] == nums[j + 1]) {
+                        j++;
+                    }
+
+                    // Skip duplicate elements for k
+                    while (j < k && nums[k] == nums[k - 1]) {
+                        k--;
+                    }
+
+                    // Move the pointers
+                    j++;
+                    k--;
+                } else if (sum < 0) {
+                    // Sum is less than zero, increment j to increase the sum
+                    j++;
+                } else {
+                    // Sum is greater than zero, decrement k to decrease the sum
+                    k--;
+                }
             }
         }
-        return response;
+        return ans;
     }
-
-     void twoSumII(int[] arr, int i, List<List<Integer>> response) {
-        int l = i+1;
-        int r = arr.length-1;
-        while (l<r){
-            int sum = arr[i] + arr[l] + arr[r];
-            if(sum < 0){
-                ++l;
-            }
-            else if(sum > 0){
-                --r;
-            }else {
-                response.add(Arrays.asList(arr[i],arr[l++],arr[r--]));
-                while (l < r && arr[l] == arr[l-1]);
-                ++l;
-            }
-        }
-    }
-
 
     public List<List<Integer>> threeSumII(int[] nums) {
         Set<List<Integer>> res = new HashSet<>();

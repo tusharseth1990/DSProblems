@@ -3,6 +3,7 @@ package array.hashing;
 // then sent over the network and is decoded back to the original list of strings.
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class EncodeDecodeString {
@@ -44,4 +45,11 @@ public class EncodeDecodeString {
         return list;
     }
 
+    public static void main(String[] args) {
+        String[] str = {"eat", "tea", "tan", "ate", "nat", "bat"};
+        EncodeDecodeString ens= new EncodeDecodeString();
+        String encodedString= ens.encode(Arrays.stream(str).toList());
+        List<String> decoded= ens.decode(encodedString);
+        System.out.println(decoded);
+    }
 }

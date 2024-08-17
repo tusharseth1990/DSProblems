@@ -20,38 +20,20 @@ public class TwoSumSortArray {
          int currSum = 0;
          while(l < r){
              currSum = a[l] + a[r];
+
+             if(currSum == target){
+                 return new int[]{l+1, r+1};
+             }
              if(currSum > target){
                  r = r -1;
              }
              else if(currSum < target){
                  l = l +1;
              }
-             else {
-                 return new int[] {l,r};
-             }
-
          }
          return new int[]{};
      }
- // better efficient sol.
-    public int[] twoSumSol(int[] numbers, int target) {
-        int ans[]=new int[2];
-        int i=0;
-        int j=numbers.length-1;
 
-        while(i<j){
-            if(numbers[i]+numbers[j]==target){
-                ans[0]=i+1;
-                ans[1]=j+1;
-                break;
-            }
-            else if(numbers[i]+numbers[j]>target)
-                j--;
-            else if(numbers[i]+numbers[j]<target)
-                i++;
-        }
-        return ans;
-    }
 
     public static void main(String[] args) {
          int[] a = {1,3,4,5,7,10,11};
