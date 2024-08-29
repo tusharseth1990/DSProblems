@@ -21,7 +21,7 @@ Example 1:
 Input: s = "ABAB", k = 2
 Output: 4
 Explanation: Replace the two 'A's with two 'B's or vice versa.
-
+// O(n)
 //logic: windowLength - maxFrequency <= k
      */
  public int characterReplacement(String s, int k) {

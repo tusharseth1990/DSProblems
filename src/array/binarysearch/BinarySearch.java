@@ -6,6 +6,7 @@ public class BinarySearch {
     {
         if(l<=r)
         {
+            // mid is calculated this way to prevent integer overflow.
             int mid= l+(r-l)/2;
             if(arr[mid]==x)
             {
