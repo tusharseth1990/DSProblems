@@ -6,13 +6,18 @@ You are given an n x n 2D matrix representing an image, rotate the image by 90 d
 
 You have to rotate the image in-place, which means you have to modify the input 2D matrix directly.
  DO NOT allocate another 2D matrix and do the rotation
+
+    L       R
+ T  [1  2   3]
+    [4  5   6]
+ B  [7  8   9]
  */
 
 import java.util.Arrays;
 
 public class RotateImageBy90 {
-
-    public void rotate(int[][] matrix) {
+//o(n2)  // o(1)
+     public void rotate(int[][] matrix) {
         int l = 0;
         int r = matrix.length - 1;
 

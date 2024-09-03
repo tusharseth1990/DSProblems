@@ -20,7 +20,6 @@ import java.util.LinkedList;
 //i.e. 3<2 not true (else)
 //Take maximum of second item(end time) in the intervals
 
-
 public class MergeInterval {
     public int[][] merge(int[][] intervals) {
         Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
