@@ -5,6 +5,9 @@ import java.util.*;
 public class Anagram {
      //convert both strings into character array
     //then sort it & compare each character by traversing
+
+    //nlogn + nlogn + n
+    // n logn
     boolean areAnagrams(String s1, String s2)
     {
         if(s1.length()!=s2.length())
@@ -24,21 +27,37 @@ public class Anagram {
         }
         return true;
     }
-    //nlogn + nlogn + n
-    //nlogn
+
+
+    public boolean isAnagram(String s, String t) {
+        if (s.length() != t.length()) {
+            return false;
+        }
+
+        HashMap<Character, Integer> countS = new HashMap<>();
+        HashMap<Character, Integer> countT = new HashMap<>();
+        for (int i = 0; i < s.length(); i++) {
+            countS.put(s.charAt(i), countS.getOrDefault(s.charAt(i), 0) + 1);
+            countT.put(t.charAt(i), countT.getOrDefault(t.charAt(i), 0) + 1);
+        }
+        return countS.equals(countT);
+    }
+
+
 
     //if length is unequal return false
     //convert strings to character array
     //take 2 hashmaps,
-    // traverse 1st character array and put in hashmap
-    // traverse 2nd character array and put in hashmap
+    // traverse 1st character array and put in hashmap i.e. char key , occurrence
+    // traverse 2nd character array and put in hashmap i.e. char key , occurrence
     //And compare both hashmap are equals or not.
 
     //another solution traverse 1st character array & put in hashmap & traverse another
     //char array and keep deleting the existing char and in the end if it is empty then
     //it is anagram
 
-    //n
+    //n + n = n - time complexity
+    //n - space complexity
     boolean areAnagramWithDS(String s1,String s2)  {
         if(s1.length()!=s2.length())
         {
@@ -77,6 +96,8 @@ public class Anagram {
         }
     }
 
+
+    // n + 255(constant) = n
     static int CHARS = 255;
     boolean areAnagramByHashing(String s1,String s2)
     {
@@ -84,8 +105,8 @@ public class Anagram {
         {
             return false;
         }
-        int count1[]=new int[CHARS];
-        int count2[]=new int[CHARS];
+        int[] count1 =new int[CHARS];
+        int[] count2 =new int[CHARS];
         for(int i=0;i< s1.length();i++)
         {
             count1[s1.charAt(i)]++;
@@ -100,6 +121,7 @@ public class Anagram {
         }
         return true;
     }
+
 
     public static void main(String[] args) {
         Anagram anagram = new Anagram();

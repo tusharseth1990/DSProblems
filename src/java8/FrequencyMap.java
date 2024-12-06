@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 public class FrequencyMap {
 
 
-    private void characterCountMap(String str) {
+    private static void characterCountMap(String str) {
         //frequency map with maintaining order
         System.out.println("freq Map");
         Stream.of(str.toLowerCase().replaceAll("\\s", "").split(""))
@@ -44,8 +44,9 @@ public class FrequencyMap {
         FrequencyMap frequencyMap = new FrequencyMap();
         //frequencyMap.characterCountMap("Java Concept Of The Day");
         //characterCountMapWithOrder("Java Concept Of The Day");
-        characterCountMapWithMostFrequencyOrder("Java Concept Of The Day");
-        characterCountEasy("Java Concept Of The Day");
+//        characterCountMapWithMostFrequencyOrder("Java Concept Of The Day");
+//        characterCountEasy("Java Concept Of The Day");
+        characterCountMap("Java Concept Of The Day");
     }
 
 

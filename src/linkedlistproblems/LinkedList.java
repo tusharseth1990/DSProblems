@@ -34,7 +34,6 @@ public class LinkedList {
 			last = last.next;
 		}
 		last.next = new_node;
-		return;
 	}
 
 	public void insertAfter(int x,Node prev) {

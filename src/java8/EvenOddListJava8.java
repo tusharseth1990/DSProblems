@@ -12,20 +12,21 @@ public class EvenOddListJava8 {
         List<Integer> oddList = list.stream().filter(integer -> integer %2 != 0).collect(Collectors.toList());
         List<Integer> evenList = list.stream().filter(integer -> integer %2 == 0).collect(Collectors.toList());
         //sort & even numbers
-        System.out.println("Even sorted numbers ");
-        list.stream().filter(integer -> integer%2==0).sorted().forEach(System.out::println);
+//        System.out.println("Even sorted numbers ");
+//        list.stream().filter(integer -> integer%2==0).sorted().forEach(System.out::println);
 
         //sol2
-        Map<Boolean,List<Integer>> map = list.stream().collect(Collectors.partitioningBy(x -> x%2 == 0));
-        map.entrySet().stream().forEach(booleanListEntry -> {
-            if(booleanListEntry.getKey()){
-                System.out.println("even");
-            }
-            else{
-                System.out.println("odd");
-            }
-            booleanListEntry.getValue().forEach(System.out::println);
-        });
+//  list.stream().collect(Collectors.partitioningBy(x -> x%2 == 0)).entrySet().stream().forEach(booleanListEntry -> {
+//            if(booleanListEntry.getKey()){
+//                System.out.println("even");
+//            }
+//            else{
+//                System.out.println("odd");
+//            }
+//            booleanListEntry.getValue().forEach(System.out::println);
+//        });
+
+   list.stream().collect(Collectors.partitioningBy(x -> x%2 == 0)).entrySet().stream().forEach(booleanListEntry -> System.out.println(booleanListEntry.getValue()));
 
 
     }

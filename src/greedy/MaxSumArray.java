@@ -1,5 +1,7 @@
 package greedy;
+//brute force o(n^3)
 
+// o(n) : KADEN ALGORITHM
 public class MaxSumArray {
 
     public int maxSubArray(int[] nums) {

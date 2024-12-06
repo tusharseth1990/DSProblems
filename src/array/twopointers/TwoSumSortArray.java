@@ -27,7 +27,7 @@ public class TwoSumSortArray {
              if(currSum > target){
                  r = r -1;
              }
-             else if(currSum < target){
+             else if(currSum < target) { //or just else is sufficient
                  l = l +1;
              }
          }

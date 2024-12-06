@@ -5,7 +5,11 @@ import java.util.*;
 //Input: strs = ["eat","tea","tan","ate","nat","bat"]
 //Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
 public class GroupAnagram {
-//time complexities : NKlogK
+
+
+
+
+    //time complexities : NKlogK
     //space complexities: NK
 
     List<List<String>> groupAnagrams(String[] str) {

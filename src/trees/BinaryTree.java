@@ -11,10 +11,9 @@ import java.util.*;
 //Breadth First Traversal : 1 2 3 4 5(Level order)
 //
 //Depth First Traversals:
-//      Preorder Traversal : 1 2 4 5 3 
-//      Inorder Traversal  :  4 2 5 1 3 
-//      Postorder Traversal : 4 5 2 3 1
-
+//      Preorder Traversal : 1 2 4 5 3  (Root LR)
+//      Inorder Traversal  :  4 2 5 1 3  (L Root R)
+//      Postorder Traversal : 4 5 2 3 1  (L R Root)
 
 public class BinaryTree {
 
@@ -57,7 +56,7 @@ public class BinaryTree {
         }
     }
 
-//	Time Complexity: O(N2), where N is the number of nodes in the skewed tree.
+//	Time Complexity: O(N^2), where N is the number of nodes in the skewed tree.
 //	So time complexity of printLevelOrder() is O(n) + O(n-1) + O(n-2) + .. + O(1) which is O(N2).
 //	Auxiliary Space:  O(N) in the worst case. For a skewed tree, printGivenLevel()
 //	uses O(n) space for the call stack.
@@ -104,6 +103,10 @@ public class BinaryTree {
 //	Initialize temp_node = q.front() and print temp_node->data.
 //	Push temp_node’s children i.e. temp_node -> left then temp_node -> right to q
 //	Pop front node from q.
+
+    //				1
+    //			2		3
+    //		  4	  5
     public void levelOrderUsingQueue(Node root) {
         Queue<Node> q1 = new LinkedList<>();
         if (root == null)
@@ -111,7 +114,7 @@ public class BinaryTree {
 
         q1.add(root);
         while (!q1.isEmpty()) {
-            Node temp = q1.poll();
+            Node temp = q1.poll(); //retrieves & removes
             System.out.println(temp.data);
             if (temp.left != null) {
                 q1.add(temp.left);
@@ -128,7 +131,13 @@ public class BinaryTree {
 //	Push right child of a popped item to stack
 //	Push left child of a popped item to stack
 
+    //				1
+    //			2		3
+    //		  4	  5
     //iterative Pre-order traversal
+
+    //      Preorder Traversal : 1 2 4 5 3  (Root LR)
+
     public void preOrderTraversal(Node root) {
         Stack<Node> s1 = new Stack<>();
         if (root == null)
@@ -156,6 +165,12 @@ public class BinaryTree {
 //	c) Go to step 3.
 //			5) If current is NULL and stack is empty then we are done.
     //iterative in-order traversal
+    //				1
+    //			2		3
+    //		  4	  5
+    //iterative Pre-order traversal
+
+    //      IN-order Traversal : 4 2 5 1 3  (L Root R)
     public void inOrderTraversal(Node root) {
         Stack<Node> s1 = new Stack<>();
         boolean done = false;
@@ -433,10 +448,20 @@ public class BinaryTree {
         if (t1 == null || t2 == null) return false;
         return (t1.data == t2.data)
                 && isMirror(t1.right, t2.left)
-                && isMirror(t1.left, t2.right);
+                 && isMirror(t1.left, t2.right);
     }
 
+
+    //				2
+    //			1		4
+    //		  	      3    5
     //validate tree is bst or not
+    public boolean isValidBST(Node root) {
+        return validate(root, null, null);
+    }
+     //dfs     1 < 2 < 3 < 4 < 5
+    // make sure with root also   2 < 3 && 3 < 4
+
     public boolean validate(Node root, Integer low, Integer high) {
         // Empty trees are valid BSTs.
         if (root == null) {
@@ -450,12 +475,10 @@ public class BinaryTree {
         return validate(root.right, root.data, high) && validate(root.left, low, root.data);
     }
 
-    public boolean isValidBST(Node root) {
-        return validate(root, null, null);
-    }
 
 
     //deepest node - last node of a BT is deepest node
+    //The last node processed from the queue in level order is the deepest node in the binary tree
     public Node deepestNode(Node root) {
         Node temp = null;
         if (root == null)
@@ -483,7 +506,27 @@ public class BinaryTree {
         return (1 + Math.max(heightTree(root.left), heightTree(root.right)));
     }
 
-    //diameter of binary tree
+
+    //
+//diameter of binary tree
+//    Time Complexity: O(N)
+//    Auxiliary Space: O(N) due to recursive calls
+    int result = -1;
+    public int diameterOfBinaryTree(Node root) {
+        dfs(root);
+        return result;
+    }
+    private int dfs(Node current) {
+        if (current == null) {
+            return -1;
+        }
+        int left = 1 + dfs(current.left);
+        int right = 1 + dfs(current.right);
+        result = Math.max(result, (left + right));
+        return Math.max(left, right);
+    }
+
+    //diameter of binary tree  o(n^2)
     public int diameterBT(Node root) {
         if (root == null)
             return 0;
@@ -503,6 +546,10 @@ public class BinaryTree {
         return Math.max(lh + rh + 1, Math.max(ld, rd));
     }
 
+
+
+ // DFS // create a mirror image.
+ // swaps left child with right child and do recursively for left/right  sub-trees,
 	public Node invertTree(Node root) {
 		if (root == null) return null;
 		Node node = new Node(root.data);

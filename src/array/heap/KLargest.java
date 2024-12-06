@@ -9,6 +9,9 @@ package array.heap;
 //        int add(int val) Appends the integer val to the stream and returns the element
 //        representing the kth largest element in the stream.
 
+
+// add : log (n)
+// pop : (n -k) log n
 import java.util.PriorityQueue;
 
 public class KLargest {
