@@ -34,7 +34,7 @@ public class GroupAnagram {
     //#1#2#2#3
 
     public List<List<String>> groupAnagram(String[] strs) {
-        if (strs.length == 0) return new ArrayList();
+        if (strs.length == 0) return new ArrayList<>();
         Map<String, List<String>> ans = new HashMap<>();
         int[] count = new int[26];
         for (String s : strs) {
@@ -47,10 +47,10 @@ public class GroupAnagram {
                 sb.append(count[i]);
             }
             String key = sb.toString();
-            if (!ans.containsKey(key)) ans.put(key, new ArrayList());
+            if (!ans.containsKey(key)) ans.put(key, new ArrayList<>());
             ans.get(key).add(s);
         }
-        return new ArrayList(ans.values());
+        return new ArrayList<>(ans.values());
     }
 
     public static void main(String[] args) {

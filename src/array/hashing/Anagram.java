@@ -76,7 +76,7 @@ public class Anagram {
             else {
                 hm1.put(ch1[i], 1);
             }
-
+//            hm1.put(ch1[i], hm1.getOrDefault(ch1[i],0)+1);
             if(hm2.containsKey(ch2[i]))
             {
                 hm2.put(ch2[i],hm2.get(ch2[i])+1);
@@ -87,13 +87,7 @@ public class Anagram {
 
            // hm2.put(ch2[i],hm2.getOrDefault(ch2[i],0)+1);
         }
-        if(hm1.equals(hm2))
-        {
-            return true;
-        }
-        else{
-            return false;
-        }
+        return hm1.equals(hm2);
     }
 
 
