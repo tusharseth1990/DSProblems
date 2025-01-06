@@ -16,10 +16,10 @@ public class SpiralMatrix {
             List<Integer> result = new ArrayList<>();
             int rows = matrix.length;
             int columns = matrix[0].length;
-            int up = 0;
+            int up = 0; //top
             int left = 0;
             int right = columns - 1;
-            int down = rows - 1;
+            int down = rows - 1; //bottom
 
             while (result.size() < rows * columns) {
                 // Traverse from left to right.

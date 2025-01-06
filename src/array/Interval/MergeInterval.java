@@ -23,6 +23,11 @@ import java.util.LinkedList;
 public class MergeInterval {
     public int[][] merge(int[][] intervals) {
         Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
+
+        //public static int compareByStart(int[] a, int[] b) {
+        //    return Integer.compare(a[0], b[0]);
+        //}
+        //Arrays.sort(intervals, MyClass::compareByStart);
         LinkedList<int[]> merged = new LinkedList<>();
         for (int[] interval : intervals) {
             // if the list of merged intervals is empty or if the current

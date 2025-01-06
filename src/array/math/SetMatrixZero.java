@@ -1,7 +1,7 @@
 package array.math;
 
 public class SetMatrixZero {
-// two extra array // easier  space : o(m+n) , o(m*n)
+// two extra array // easier  space : o(m+n) , time -o(m*n)
     public void setZeroes(int[][] arr) {
         int m=arr.length,n=arr[0].length;
         boolean [] row=new boolean [m];

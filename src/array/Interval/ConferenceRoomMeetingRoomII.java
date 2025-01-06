@@ -4,7 +4,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.PriorityQueue;
-
+//Input: intervals = [(0,40),(5,10),(15,20)]
+//Output: 2
+// sort both the start : [0,5,15]
+//and end : [10,20,40]
+//and take one meetingCount =0
+//Now use two pointer one at start and one at end & always incr meetingCount by 1 & also
+// if start of meeting happened before the end then incr start ptr
 public class ConferenceRoomMeetingRoomII {
 
 //two pointer
