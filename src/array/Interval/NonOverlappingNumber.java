@@ -64,7 +64,7 @@ public class NonOverlappingNumber {
         int[][] intervals= {{1,2},{2,3},{3,4},{1,3}};
 //        int[][] intervals= {{1,2},{2,3}};
         NonOverlappingNumber n= new NonOverlappingNumber();
-        System.out.println(n.eraseOverlapIntervalsII(intervals));
+        System.out.println(n.eraseOverlapIntervalsNCSol(intervals));
     }
 
 }
