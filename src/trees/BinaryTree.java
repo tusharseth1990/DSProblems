@@ -90,7 +90,6 @@ public class BinaryTree {
         if (level > 1) {
             printGivenLevel(root.left, level - 1);
             printGivenLevel(root.right, level - 1);
-
         }
     }
 
@@ -550,7 +549,28 @@ public class BinaryTree {
 
  // DFS // create a mirror image.
  // swaps left child with right child and do recursively for left/right  sub-trees,
-	public Node invertTree(Node root) {
+
+    static void invertTreeOrMirror(Node root) {
+        if (root == null)
+            return;
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+        // Traverse the tree, level by level
+        while (!queue.isEmpty()) {
+            Node curr = queue.poll();
+            // Swap the left and right subtree
+            Node temp = curr.left;
+            curr.left = curr.right;
+            curr.right = temp;
+            // Push the left and right node to the queue
+            if (curr.left != null)
+                queue.add(curr.left);
+            if (curr.right != null)
+                queue.add(curr.right);
+        }
+    }
+//recursive
+    public Node invertTree(Node root) {
 		if (root == null) return null;
 		Node node = new Node(root.data);
 		node.right = invertTree(root.left);
@@ -571,11 +591,11 @@ public class BinaryTree {
             return true;
         }
 
-        if (p == null || q == null || p.data != q.data) {
+        if (p != null && q != null && p.data == q.data) {
+            return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+        } else {
             return false;
         }
-
-        return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
     }
 
     //width of a binary tree
@@ -612,6 +632,29 @@ public class BinaryTree {
     public int maxDepth(Node root) {
         if (root == null) return 0;
         return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
+    }
+
+    public int maxDepthIterative(Node root) {
+        Queue<Node> q = new LinkedList<>();
+        if (root != null) {
+            q.add(root);
+        }
+
+        int level = 0;
+        while (!q.isEmpty()) {
+            int size = q.size();
+            for (int i = 0; i < size; i++) {
+                Node node = q.poll();
+                if (node.left != null) {
+                    q.add(node.left);
+                }
+                if (node.right != null) {
+                    q.add(node.right);
+                }
+            }
+            level++;
+        }
+        return level;
     }
 
     //TO-DO min. depth of a BT
@@ -909,6 +952,21 @@ public class BinaryTree {
         res.val = Math.max(res.val, max_top);
 
         return max_single;
+    }
+
+    public Node lowestCommonAncestor(Node root, Node p, Node q) {
+        Node cur = root;
+
+        while (cur != null) {
+            if (p.data > cur.data && q.data > cur.data) {
+                cur = cur.right;
+            } else if (p.data < cur.data && q.data < cur.data) {
+                cur = cur.left;
+            } else {
+                return cur;
+            }
+        }
+        return null;
     }
 
     /* Function to find LCA of n1 and n2. The function assumes that both 

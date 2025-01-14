@@ -1,6 +1,7 @@
 package array.heap;
 
 
+import java.util.Comparator;
 import java.util.PriorityQueue;
 
 //K Closest Points to Origin
@@ -17,6 +18,22 @@ import java.util.PriorityQueue;
 //        Output: [[3,3],[-2,4]]
 //        Explanation: The answer [[-2,4],[3,3]] would also be accepted.
 public class KClosestPointToOrigin {
+
+//use this
+    public int[][] kClosestNC(int[][] points, int K) {
+        PriorityQueue<int[]> minHeap = new PriorityQueue<>(Comparator.comparing(a -> a[0]));
+        for (int[] point : points) {
+            int dist = point[0] * point[0] + point[1] * point[1];
+            minHeap.offer(new int[]{dist, point[0], point[1]});
+        }
+
+        int[][] result = new int[K][2];
+        for (int i = 0; i < K; ++i) {
+            int[] point = minHeap.poll();
+            result[i] = new int[]{point[1], point[2]};
+        }
+        return result;
+    }
 
     public int[][] kClosest(int[][] points, int k) {
         PriorityQueue<int[]> q = new PriorityQueue<>((a, b) ->
