@@ -1,10 +1,21 @@
 package array.slidingwindow;
 
 import java.util.HashMap;
-
+//You are given two strings s1 and s2.
+//
+//Return true if s2 contains a permutation of s1, or false otherwise. That means if a permutation of s1 exists as a substring of s2,
+// then return true.
+//
+//Both strings only contain lowercase letters.
+//
+//Example 1:
+//
+//Input: s1 = "abc", s2 = "lecabee"
+//
+//Output: true
 public class Permutation {
 
-
+//o(26*n)
 //sliding window
     public boolean checkInclusion(String s1, String s2) {
         if (s1.length() > s2.length())
@@ -57,14 +68,6 @@ public class Permutation {
                 return false;
         }
         return true;
-
     }
-
-
-
-
-
-
-
 
 }

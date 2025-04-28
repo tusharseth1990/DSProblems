@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Stack;
-
+//o(4^n/sqrt n)
 public class GenerateParenthesis {
     public static void main(String[] args) {
         GenerateParenthesis sol = new GenerateParenthesis();
