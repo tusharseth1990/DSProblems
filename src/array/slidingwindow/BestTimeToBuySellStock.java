@@ -1,4 +1,4 @@
-package array.twopointers;
+package array.slidingwindow;
 
 public class BestTimeToBuySellStock {
 //Two pointer solution
@@ -21,14 +21,6 @@ public class BestTimeToBuySellStock {
         }
         return maxProfit;
     }
-
-
-
-
-
-
-
-
 
     private int maxProfit(int[] prices) {
         int minP = Integer.MAX_VALUE;

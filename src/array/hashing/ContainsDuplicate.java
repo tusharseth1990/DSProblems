@@ -23,6 +23,23 @@ public class ContainsDuplicate {
         return false;
     }
 
+    //time & space o(n)
+    public boolean hasDuplicate(int[] nums) {
+        return Arrays.stream(nums).distinct().count() < nums.length;
+    }
+
+    //time nlogn
+    //space o(1) or o(n) depending on sorting algo
+    public boolean hasDuplicateSort(int[] nums) {
+        Arrays.sort(nums);
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] == nums[i - 1]) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
 //        int[] a = {1,1,1,3,3,4,3,2,4,2};
         int[] a = {1,3,4,2,2};

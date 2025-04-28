@@ -91,8 +91,8 @@ public class Anagram {
     }
 
 
-    // n + 255(constant) = n
-    static int CHARS = 255;
+    // n + 256(constant) = n
+    static int CHARS = 255; // if questions says for 26 you can say 26(constant)
     boolean areAnagramByHashing(String s1,String s2)
     {
         if(s1.length()!=s2.length())

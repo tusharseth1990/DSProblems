@@ -27,7 +27,6 @@ Explanation: Replace the two 'A's with two 'B's or vice versa.
 //logic: windowLength - maxFrequency <= k
      */
 
-
     public int characterReplacementHashMap(String s, int k) {
         HashMap<Character, Integer> count = new HashMap<>();
         int res = 0;

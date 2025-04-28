@@ -14,16 +14,11 @@ Explanation of logic d=for sol1:
 L=[1,1,2,6]
 R=[24,12,4,1]
 
-Example 2:
-
-Input: nums = [-1,1,0,-3,3]
-Output: [0,0,9,0,0]
-
-
+Prefix = [1,1*1,2*1,3*2] = [1,1,2,6];
+PostFix= [2*12,3*4,4*1,1] =[24,12,4,1]
+Result = [24,12,8,6]
  */
-
 public class ProductExceptSelf {
-
     int[] productExceptSelf(int[] nums)
     {
         int n = nums.length;
@@ -86,7 +81,7 @@ public class ProductExceptSelf {
     }
 
     public static void main(String[] args) {
-        int[] nums={4,5,1,8,2};
+        int[] nums={1,2,3,4};
         ProductExceptSelf prod= new ProductExceptSelf();
         int[] answer=prod.productExceptSelf(nums);
         for(int i:answer)
