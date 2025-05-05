@@ -18,7 +18,7 @@ import java.util.PriorityQueue;
 //        Output: [[3,3],[-2,4]]
 //        Explanation: The answer [[-2,4],[3,3]] would also be accepted.
 public class KClosestPointToOrigin {
-
+//min heap : time : k log n , space : n
 //use this
     public int[][] kClosestNC(int[][] points, int K) {
         PriorityQueue<int[]> minHeap = new PriorityQueue<>(Comparator.comparing(a -> a[0]));
@@ -35,22 +35,26 @@ public class KClosestPointToOrigin {
         return result;
     }
 
+    //max heap,  time: n * log k, space : k
+
     public int[][] kClosest(int[][] points, int k) {
-        PriorityQueue<int[]> q = new PriorityQueue<>((a, b) ->
-                Integer.compare(
-                        (a[0] * a[0] + a[1] * a[1]),
-                        (b[0] * b[0] + b[1] * b[1])
-                )
+        PriorityQueue<int[]> maxHeap = new PriorityQueue<>(
+                (a, b) -> Integer.compare(b[0] * b[0] + b[1] * b[1],
+                        a[0] * a[0] + a[1] * a[1])
         );
+
         for (int[] point : points) {
-            q.add(point);
+            maxHeap.offer(point);
+            if (maxHeap.size() > k) {
+                maxHeap.poll();
+            }
         }
-        int[][] ans = new int[k][2];
-        for (int i = 0; i < k; i++) {
-            int[] cur = q.poll();
-            ans[i][0] = cur[0];
-            ans[i][1] = cur[1];
+
+        int[][] res = new int[k][2];
+        int i = 0;
+        while (!maxHeap.isEmpty()) {
+            res[i++] = maxHeap.poll();
         }
-        return ans;
+        return res;
     }
 }
