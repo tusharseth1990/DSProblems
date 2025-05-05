@@ -11,11 +11,11 @@ package array.heap;
 // pop : (n -k) log n
 import java.util.PriorityQueue;
 
-public class KLargest {
+public class KLargestStream {
     private static int k;
     private PriorityQueue<Integer> minHeap;
 
-    public KLargest(int k, int[] nums) {
+    public KLargestStream(int k, int[] nums) {
         this.k = k;
         minHeap = new PriorityQueue<>();
 

@@ -34,4 +34,9 @@ public class InsertInterval {
         if (newInterval != null) res.add(newInterval);
         return res.toArray(new int[res.size()][]);
     }
+
+    public static void main(String[] args) {
+
+    }
+
 }
