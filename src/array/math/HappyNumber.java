@@ -27,6 +27,8 @@ Explanation:
 
  //algo : keep squaring & if a number visited twice put in hashset & that number is 1
  then return true else false
+
+ space & time : log n
  */
 public class HappyNumber {
 

@@ -14,6 +14,9 @@ public class Pow {
         if (n == 0) {
             return 1;
         }
+        if(x == 0){
+            return 0;
+        }
         //Make the negative values positive
         else if (n < 0) {
             //whenever even just divide it by 2
