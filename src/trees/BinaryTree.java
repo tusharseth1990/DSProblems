@@ -106,6 +106,16 @@ public class BinaryTree {
     //				1
     //			2		3
     //		  4	  5
+
+    // Q1 : 1
+    // Print : 1
+    // Q1 : 2 , 3
+    // Print 2
+    //Q1 : 3, 4, 5
+    // Print 3
+    // Q1 : 4, 5
+    //Print 4
+    //Print 5
     public void levelOrderUsingQueue(Node root) {
         Queue<Node> q1 = new LinkedList<>();
         if (root == null)
@@ -136,7 +146,15 @@ public class BinaryTree {
     //iterative Pre-order traversal
 
     //      Preorder Traversal : 1 2 4 5 3  (Root LR)
-
+    // Stack S1 : 1
+    // print 1
+    // S1: 3 2
+    // print 2
+    // S1 : 3 5 4
+    // print 4
+    // S1: 3 5
+    // print 5
+    // print 3
     public void preOrderTraversal(Node root) {
         Stack<Node> s1 = new Stack<>();
         if (root == null)
@@ -510,19 +528,19 @@ public class BinaryTree {
 //diameter of binary tree
 //    Time Complexity: O(N)
 //    Auxiliary Space: O(N) due to recursive calls
-    int result = -1;
+    int result = 0;
     public int diameterOfBinaryTree(Node root) {
         dfs(root);
         return result;
     }
     private int dfs(Node current) {
         if (current == null) {
-            return -1;
+            return 0;
         }
-        int left = 1 + dfs(current.left);
-        int right = 1 + dfs(current.right);
+        int left = dfs(current.left);
+        int right = dfs(current.right);
         result = Math.max(result, (left + right));
-        return Math.max(left, right);
+        return 1 + Math.max(left, right);
     }
 
     //diameter of binary tree  o(n^2)
@@ -545,10 +563,22 @@ public class BinaryTree {
         return Math.max(lh + rh + 1, Math.max(ld, rd));
     }
 
+    //recursive //DFS
+    public Node invertTree(Node root) {
+        if (root == null) return null;
+        //swap logic lef and right child
+        Node temp = root.left;
+        root.left = root.right;
+        root.right = temp;
 
+        invertTree(root.left);
+        invertTree(root.right);
+
+        return root;
+    }
 
  // DFS // create a mirror image.
- // swaps left child with right child and do recursively for left/right  sub-trees,
+ // swaps left child with right child and do recursively for left/right sub-trees,
 
     static void invertTreeOrMirror(Node root) {
         if (root == null)
@@ -569,15 +599,7 @@ public class BinaryTree {
                 queue.add(curr.right);
         }
     }
-//recursive
-    public Node invertTree(Node root) {
-		if (root == null) return null;
-		Node node = new Node(root.data);
-		node.right = invertTree(root.left);
-		node.data = root.data;
-		node.left = invertTree(root.right);
-		return node;
-	}
+
 
     public boolean isSubtree(Node root, Node subRoot) {
         if (subRoot == null || isSameTree(root, subRoot)) return true;
@@ -629,11 +651,12 @@ public class BinaryTree {
         return 0;
     }
 
+    //maximum depth of binary tree
     public int maxDepth(Node root) {
         if (root == null) return 0;
         return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
     }
-
+// max depth using queue // bfs
     public int maxDepthIterative(Node root) {
         Queue<Node> q = new LinkedList<>();
         if (root != null) {
@@ -655,6 +678,28 @@ public class BinaryTree {
             level++;
         }
         return level;
+    }
+
+    public boolean isBalanced(Node root) {
+        return height(root) != -1;
+    }
+
+    private int heightForBal(Node node) {
+        if (node == null) return 0;  // Base case: empty tree has height 0
+
+        // Recursively get the height of the left subtree
+        int leftHeight = heightForBal(node.left);
+        if (leftHeight == -1) return -1;  // If the left subtree is unbalanced, return -1
+
+        // Recursively get the height of the right subtree
+        int rightHeight = heightForBal(node.right);
+        if (rightHeight == -1) return -1;  // If the right subtree is unbalanced, return -1
+
+        // If the height difference between left and right subtrees is more than 1, return -1
+        if (Math.abs(leftHeight - rightHeight) > 1) return -1;
+
+        // Return the height of the current node
+        return Math.max(leftHeight, rightHeight) + 1;
     }
 
     //TO-DO min. depth of a BT
@@ -954,22 +999,26 @@ public class BinaryTree {
         return max_single;
     }
 
-    public Node lowestCommonAncestor(Node root, Node p, Node q) {
-        Node cur = root;
 
-        while (cur != null) {
-            if (p.data > cur.data && q.data > cur.data) {
-                cur = cur.right;
-            } else if (p.data < cur.data && q.data < cur.data) {
-                cur = cur.left;
-            } else {
-                return cur;
-            }
+    //log(n) - time complexity
+    // LCA with two nodes
+    public Node lowestCommonAncestorRec(Node root, Node p, Node q) {
+        if (root == null || p == null || q == null) {
+            return null;
         }
-        return null;
+        if (Math.max(p.data, q.data) < root.data) {
+            return lowestCommonAncestorRec(root.left, p, q);
+        } else if (Math.min(p.data, q.data) > root.data) {
+            return lowestCommonAncestorRec(root.right, p, q);
+        } else {
+            return root;
+        }
     }
 
-    /* Function to find LCA of n1 and n2. The function assumes that both 
+
+
+
+    /* Function to find LCA of n1 and n2 values are given. The function assumes that both
     n1 and n2 are present in BST */
     //log(n) - time complexity
     //
@@ -990,24 +1039,27 @@ public class BinaryTree {
     }
 
     public List<Integer> rightSideView(Node root) {
-        List<Integer> list = new ArrayList<Integer>();
-        if (root == null) return list;
-        bfs(list, root);
-        return list;
-    }
-
-    public void bfs(List<Integer> list, Node root) {
+        List<Integer> res = new ArrayList<>();
         Queue<Node> q = new LinkedList<>();
         q.offer(root);
+
         while (!q.isEmpty()) {
-            int levelSize = q.size();
-            for (int i = 0; i < levelSize; i++) {
-                Node cur = q.poll();
-                if (i == 0) list.add(cur.data);
-                if (cur.right != null) q.offer(cur.right);
-                if (cur.left != null) q.offer(cur.left);
+            Node rightSide = null;
+            int qLen = q.size();
+
+            for (int i = 0; i < qLen; i++) {
+                Node node = q.poll();
+                if (node != null) {
+                    rightSide = node;
+                    q.offer(node.left);
+                    q.offer(node.right);
+                }
+            }
+            if (rightSide != null) {
+                res.add(rightSide.data);
             }
         }
+        return res;
     }
 
     public int kthSmallest(Node root, int k) {

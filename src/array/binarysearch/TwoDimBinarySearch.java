@@ -3,6 +3,10 @@ package array.binarysearch;
 public class TwoDimBinarySearch {
 
     //    Time: O(log(mn)) or (log m + log n) | Space: O(1)
+
+    // 3*3 matrix , mid (0 + 2)/2 = 1
+    // mid/col = 1/3 = 1, 1 % 3 = 1
+    //
     public boolean searchMatrix2(int[][] matrix, int target) {
         if(matrix.length == 0) return false;
 
