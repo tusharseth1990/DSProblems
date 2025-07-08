@@ -51,7 +51,7 @@ public class LinkedList {
 		Node temp = head, prev = null;
 		if(temp == null)
 			return;
-		if(temp!=null && temp.data == k) {
+		if(temp != null && temp.data == k) {
 			head = temp.next;
 		}
 		while(temp!=null && temp.data != k) {

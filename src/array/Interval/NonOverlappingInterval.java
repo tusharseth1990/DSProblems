@@ -1,13 +1,15 @@
 package array.Interval;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
-public class NonOverlappingNumber {
+public class NonOverlappingInterval {
 //Input: intervals = [[1,2],[2,4],[1,4]]
     //sorted  intervals = [[1,2],[1,4],[2,4]]
 //Output: 1
     public int eraseOverlapIntervalsNCSol(int[][] intervals) {
-        Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
+        //Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
+        Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
         int res = 0;
         int prevEnd = intervals[0][1];
 
@@ -63,7 +65,7 @@ public class NonOverlappingNumber {
     public static void main(String[] args) {
         int[][] intervals= {{1,2},{2,3},{3,4},{1,3}};
 //        int[][] intervals= {{1,2},{2,3}};
-        NonOverlappingNumber n= new NonOverlappingNumber();
+        NonOverlappingInterval n= new NonOverlappingInterval();
         System.out.println(n.eraseOverlapIntervalsNCSol(intervals));
     }
 

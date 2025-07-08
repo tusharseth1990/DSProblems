@@ -25,7 +25,7 @@ public class LongestConsecutiveSubsequence {
 
         int longestStreak = 1;
         //nums = [100,4,200,1,3,2]
-        for (int num : num_set) {
+        for (int num : nums) {
             if (!num_set.contains(num-1)) {
                 int currentNum = num;
                 int currentStreak = 1;

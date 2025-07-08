@@ -443,7 +443,152 @@ public class BinaryTree {
         return c;
     }
 
-    //check Two binary trees are structural identical same or not
+    //recursive //DFS
+    public Node invertTree(Node root) {
+        if (root == null) return null;
+        //swap logic lef and right child
+        Node temp = root.left;
+        root.left = root.right;
+        root.right = temp;
+
+        invertTree(root.left);
+        invertTree(root.right);
+
+        return root;
+    }
+
+    // DFS // create a mirror image.
+    // swaps left child with right child and do recursively for left/right sub-trees,
+
+    static void invertTreeOrMirror(Node root) {
+        if (root == null)
+            return;
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+        // Traverse the tree, level by level
+        while (!queue.isEmpty()) {
+            Node curr = queue.poll();
+            // Swap the left and right subtree
+            Node temp = curr.left;
+            curr.left = curr.right;
+            curr.right = temp;
+            // Push the left and right node to the queue
+            if (curr.left != null)
+                queue.add(curr.left);
+            if (curr.right != null)
+                queue.add(curr.right);
+        }
+    }
+
+    //maximum depth of binary tree
+    // t: O(n) , s : O(h)
+    public int maxDepth(Node root) {
+        if (root == null) return 0;
+        return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
+    }
+    // max depth using queue // BFS
+    //the no of levels = max the depth of the tree.
+    //t: O(n), s: O(n)
+    public int maxDepthIterative(Node root) {
+        Queue<Node> q = new LinkedList<>();
+        if (root != null) {
+            q.add(root);
+        }
+
+        int level = 0;
+        while (!q.isEmpty()) {
+            int size = q.size();
+            for (int i = 0; i < size; i++) {
+                Node node = q.poll();
+                if (node.left != null) {
+                    q.add(node.left);
+                }
+                if (node.right != null) {
+                    q.add(node.right);
+                }
+            }
+            level++;
+        }
+        return level;
+    }
+
+    //
+//diameter of binary tree
+//    Time Complexity: O(N)
+//    Auxiliary Space: O(N) due to recursive calls
+    int result = 0;
+    public int diameterOfBinaryTree(Node root) {
+        dfs(root);
+        return result;
+    }
+    private int dfs(Node current) {
+        if (current == null) {
+            return 0;
+        }
+        int left = dfs(current.left);
+        int right = dfs(current.right);
+        result = Math.max(result, (left + right));
+        return 1 + Math.max(left, right);
+    }
+
+    //diameter of binary tree  o(n^2)
+    public int diameterBT(Node root) {
+        if (root == null)
+            return 0;
+        // get the height of left and right sub-trees
+
+        int lh = heightTree(root.left);
+        int rh = heightTree(root.right);
+        // get the diameter of left and right sub-trees
+        int ld = diameterBT(root.left);
+        int rd = diameterBT(root.right);
+		 /* Return max of following three
+          1) Diameter of left subtree
+          2) Diameter of right subtree
+          3) Height of left subtree + height of right
+          subtree + 1
+         */
+        return Math.max(lh + rh + 1, Math.max(ld, rd));
+    }
+
+    static int isBalancedRec(Node root) {
+
+        // Base case: Height of empty tree is zero
+        if (root == null)
+            return 0;
+
+        // Find Heights of left and right subtrees
+        int lHeight = isBalancedRec(root.left);
+        int rHeight = isBalancedRec(root.right);
+
+        // If either of the subtrees are unbalanced or the absolute difference
+        // of their heights is greater than 1, return -1
+        if (lHeight == -1 || rHeight == -1 || Math.abs(lHeight - rHeight) > 1)
+            return -1;
+
+        // Return the height of the tree
+        return Math.max(lHeight, rHeight) + 1;
+    }
+
+    // Function to check if the tree is height balanced
+    static boolean isBalanced(Node root) {
+        return isBalancedRec(root) > 0;
+    }
+
+    private boolean isSameTree(Node p, Node q) {
+        if (p == null && q == null) {
+            return true;
+        }
+
+        if (p != null && q != null && p.data == q.data) {
+            return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+        } else {
+            return false;
+        }
+    }
+
+
+    //check Two binary trees are structural identical same or not // same tree
     public boolean identicalOrNot(Node root1, Node root2) {
         if (root1 == null && root2 == null)
             return true;
@@ -524,83 +669,6 @@ public class BinaryTree {
     }
 
 
-    //
-//diameter of binary tree
-//    Time Complexity: O(N)
-//    Auxiliary Space: O(N) due to recursive calls
-    int result = 0;
-    public int diameterOfBinaryTree(Node root) {
-        dfs(root);
-        return result;
-    }
-    private int dfs(Node current) {
-        if (current == null) {
-            return 0;
-        }
-        int left = dfs(current.left);
-        int right = dfs(current.right);
-        result = Math.max(result, (left + right));
-        return 1 + Math.max(left, right);
-    }
-
-    //diameter of binary tree  o(n^2)
-    public int diameterBT(Node root) {
-        if (root == null)
-            return 0;
-        // get the height of left and right sub-trees
-
-        int lh = heightTree(root.left);
-        int rh = heightTree(root.right);
-        // get the diameter of left and right sub-trees
-        int ld = diameterBT(root.left);
-        int rd = diameterBT(root.right);
-		 /* Return max of following three
-          1) Diameter of left subtree
-          2) Diameter of right subtree
-          3) Height of left subtree + height of right
-          subtree + 1
-         */
-        return Math.max(lh + rh + 1, Math.max(ld, rd));
-    }
-
-    //recursive //DFS
-    public Node invertTree(Node root) {
-        if (root == null) return null;
-        //swap logic lef and right child
-        Node temp = root.left;
-        root.left = root.right;
-        root.right = temp;
-
-        invertTree(root.left);
-        invertTree(root.right);
-
-        return root;
-    }
-
- // DFS // create a mirror image.
- // swaps left child with right child and do recursively for left/right sub-trees,
-
-    static void invertTreeOrMirror(Node root) {
-        if (root == null)
-            return;
-        Queue<Node> queue = new LinkedList<>();
-        queue.add(root);
-        // Traverse the tree, level by level
-        while (!queue.isEmpty()) {
-            Node curr = queue.poll();
-            // Swap the left and right subtree
-            Node temp = curr.left;
-            curr.left = curr.right;
-            curr.right = temp;
-            // Push the left and right node to the queue
-            if (curr.left != null)
-                queue.add(curr.left);
-            if (curr.right != null)
-                queue.add(curr.right);
-        }
-    }
-
-
     public boolean isSubtree(Node root, Node subRoot) {
         if (subRoot == null || isSameTree(root, subRoot)) return true;
         if (root == null) return false;
@@ -608,17 +676,6 @@ public class BinaryTree {
         return isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot);
     }
 
-    private boolean isSameTree(Node p, Node q) {
-        if (p == null && q == null) {
-            return true;
-        }
-
-        if (p != null && q != null && p.data == q.data) {
-            return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
-        } else {
-            return false;
-        }
-    }
 
     //width of a binary tree
     int getMaxWidth(Node node) {
@@ -651,56 +708,7 @@ public class BinaryTree {
         return 0;
     }
 
-    //maximum depth of binary tree
-    public int maxDepth(Node root) {
-        if (root == null) return 0;
-        return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
-    }
-// max depth using queue // bfs
-    public int maxDepthIterative(Node root) {
-        Queue<Node> q = new LinkedList<>();
-        if (root != null) {
-            q.add(root);
-        }
 
-        int level = 0;
-        while (!q.isEmpty()) {
-            int size = q.size();
-            for (int i = 0; i < size; i++) {
-                Node node = q.poll();
-                if (node.left != null) {
-                    q.add(node.left);
-                }
-                if (node.right != null) {
-                    q.add(node.right);
-                }
-            }
-            level++;
-        }
-        return level;
-    }
-
-    public boolean isBalanced(Node root) {
-        return height(root) != -1;
-    }
-
-    private int heightForBal(Node node) {
-        if (node == null) return 0;  // Base case: empty tree has height 0
-
-        // Recursively get the height of the left subtree
-        int leftHeight = heightForBal(node.left);
-        if (leftHeight == -1) return -1;  // If the left subtree is unbalanced, return -1
-
-        // Recursively get the height of the right subtree
-        int rightHeight = heightForBal(node.right);
-        if (rightHeight == -1) return -1;  // If the right subtree is unbalanced, return -1
-
-        // If the height difference between left and right subtrees is more than 1, return -1
-        if (Math.abs(leftHeight - rightHeight) > 1) return -1;
-
-        // Return the height of the current node
-        return Math.max(leftHeight, rightHeight) + 1;
-    }
 
     //TO-DO min. depth of a BT
     int minimumDepth(Node root) {

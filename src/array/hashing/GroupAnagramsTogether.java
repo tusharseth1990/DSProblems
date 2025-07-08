@@ -17,7 +17,7 @@ public class GroupAnagramsTogether {
         for(String s:strs) //n
         {
             char[] ch=s.toCharArray();
-            Arrays.sort(ch);//nlogn
+            Arrays.sort(ch);//n log n
             String key=String.valueOf(ch);
             if(!hm.containsKey(key))
             {

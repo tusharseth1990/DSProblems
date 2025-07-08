@@ -6,88 +6,43 @@ import java.util.*;
 Given an m x n matrix, return all elements of the matrix in spiral order.
 Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
 Output: [1,2,3,6,9,8,7,4,5]
-
+        L       R
+   T    1 2 3 4
+        5 6 7 8
+        9 1 5 3
+   B
  */
 
 public class SpiralMatrix {
 //
-    class Solution {
-        public List<Integer> spiralOrder(int[][] matrix) {
-            List<Integer> result = new ArrayList<>();
-            int rows = matrix.length;
-            int columns = matrix[0].length;
-            int up = 0; //top
-            int left = 0;
-            int right = columns - 1;
-            int down = rows - 1; //bottom
-
-            while (result.size() < rows * columns) {
-                // Traverse from left to right.
-                for (int col = left; col <= right; col++) {
-                    result.add(matrix[up][col]);
-                }
-                // Traverse downwards.
-                for (int row = up + 1; row <= down; row++) {
-                    result.add(matrix[row][right]);
-                }
-                // Make sure we are now on a different row.
-                if (up != down) {
-                    // Traverse from right to left.
-                    for (int col = right - 1; col >= left; col--) {
-                        result.add(matrix[down][col]);
-                    }
-                }
-                // Make sure we are now on a different column.
-                if (left != right) {
-                    // Traverse upwards.
-                    for (int row = down - 1; row > up; row--) {
-                        result.add(matrix[row][left]);
-                    }
-                }
-                left++;
-                right--;
-                up++;
-                down--;
-            }
-
-            return result;
-        }
-    }
-
     public List<Integer> spiralOrder(int[][] matrix) {
-        List<Integer> list = new ArrayList<>();
-        int rb = 0;
-        int re = matrix.length - 1;
-        int cb = 0;
-        int ce = matrix[0].length - 1;
+        List<Integer> res = new ArrayList<>();
+        int left = 0, right = matrix[0].length;
+        int top = 0, bottom = matrix.length;
 
-        while (rb <= re && cb <= ce) {
-            for (int j = cb; j <= ce; j++) {
-                list.add(matrix[rb][j]);
+        while (left < right && top < bottom) {
+            for (int i = left; i < right; i++) {
+                res.add(matrix[top][i]);
             }
-            rb++;
-
-            for (int i = rb; i <= re; i++) {
-                list.add(matrix[i][ce]);
+            top++;
+            for (int i = top; i < bottom; i++) {
+                res.add(matrix[i][right - 1]);
             }
-            ce--;
-
-            if (rb <= re) {
-                for (int j = ce; j >= cb; j--) {
-                    list.add(matrix[re][j]);
-                }
+            right--;
+            if (!(left < right && top < bottom)) {
+                break;
             }
-            re--;
-
-            if (cb <= ce) {
-                for (int i = re; i >= rb; i--) {
-                    list.add(matrix[i][cb]);
-                }
+            for (int i = right - 1; i >= left; i--) {
+                res.add(matrix[bottom - 1][i]);
             }
-            cb++;
+            bottom--;
+            for (int i = bottom - 1; i >= top; i--) {
+                res.add(matrix[i][left]);
+            }
+            left++;
         }
 
-        return list;
+        return res;
     }
 
     public static void main(String[] args) {

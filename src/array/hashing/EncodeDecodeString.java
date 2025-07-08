@@ -25,7 +25,7 @@ public class EncodeDecodeString {
         List<String> list = new ArrayList<>();
 
         int i = 0;
-        //100#qwertykeyq
+
         // "5#Hello5#World"
         //  i
         //   j

@@ -20,27 +20,16 @@ import java.util.List;
 // interval if it overlaps return false in the end return true.
 
 public class MeetingRoom {
-    public boolean canAttendMeetings(int[][] intervals) {
-        Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
-        for (int i = 0; i < intervals.length - 1; i++) {
-            if (intervals[i][1] > intervals[i + 1][0]) {
-                return false;
-            }
+
+    public class Interval {
+        public int start, end;
+        public Interval(int start, int end) {
+            this.start = start;
+            this.end = end;
         }
-        return true;
     }
 
-
-
-      public class Interval {
-          public int start, end;
-          public Interval(int start, int end) {
-              this.start = start;
-              this.end = end;
-          }
-      }
-
-     public boolean canAttendMeetings(List<Interval> intervals) {
+    public boolean canAttendMeetings(List<Interval> intervals) {
         Collections.sort(intervals, Comparator.comparingInt(i -> i.start));
 
         for (int i = 1; i < intervals.size(); i++) {
@@ -54,4 +43,19 @@ public class MeetingRoom {
 
         return true;
     }
+
+    public boolean canAttendMeetings(int[][] intervals) {
+      //  Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
+        Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
+        for (int i = 0; i < intervals.length - 1; i++) {
+            if (intervals[i][1] > intervals[i + 1][0]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+
+
 }

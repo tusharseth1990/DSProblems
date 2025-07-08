@@ -1,6 +1,7 @@
 package array.Interval;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.LinkedList;
 //Input: intervals = [[1,3],[8,10],[15,18],[2,6]]
 //Output: [[1,6],[8,10],[15,18]]
@@ -22,8 +23,8 @@ import java.util.LinkedList;
 
 public class MergeInterval {
     public int[][] merge(int[][] intervals) {
-        Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
-
+        //Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
+        Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
         //public static int compareByStart(int[] a, int[] b) {
         //    return Integer.compare(a[0], b[0]);
         //}
