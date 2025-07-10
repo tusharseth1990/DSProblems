@@ -227,17 +227,7 @@ public class LinkedList {
 	             System.out.println("Loop not found"); 
 	     } 
 	     
-	      int countNodes( Node n)  
-	     {  
-	     int res = 1;  
-	     Node temp = n;  
-	     while (temp.next != n)  
-	     {  
-	         res++;  
-	         temp = temp.next;  
-	     }  
-	     return res;  
-	     }  
+
 	     // remove duplicates from a sorted linked list 
 	      void removeDuplicates() 
 	      { 
@@ -258,10 +248,21 @@ public class LinkedList {
 	              curr.next = temp; 
 	              curr = curr.next; 
 	          } 
-	      } 
-	      
-	      
-	     /* This function detects and counts loop  
+	      }
+
+	int countNodes( Node n)
+	{
+		int res = 1;
+		Node temp = n;
+		while (temp.next != n)
+		{
+			res++;
+			temp = temp.next;
+		}
+		return res;
+	}
+
+	/* This function detects and counts loop
 	     nodes in the list. If loop is not there  
 	     in then returns 0 */
 	      int countNodesInLoop(Node list)

@@ -3,7 +3,11 @@ package linkedlistproblems;
 
 import java.util.HashMap;
 import java.util.Map;
-
+//LRUCache(int capacity) Initialize the LRU cache of size capacity.
+//int get(int key) Return the value corresponding to the key if the key exists, otherwise return -1.
+//void put(int key, int value) Update the value of the key if the key exists.
+// Otherwise, add the key-value pair to the cache. If the introduction of the new pair causes the
+// cache to exceed its capacity, remove the least recently used key.
 class LRUCache {
 
     private class Node {
@@ -17,6 +21,7 @@ class LRUCache {
         public Node(int key, int val) {
             this.key = key;
             this.val = val;
+            prev = next = null;
         }
     }
 
@@ -30,7 +35,7 @@ class LRUCache {
         this.capacity = capacity;
         cache = new HashMap<>();
 
-        //left = LRU , right = most recent
+        //left = least recently used , right = most recent used
         this.left = new Node(0, 0);
         this.right = new Node(0, 0);
         this.left.next = this.right;
