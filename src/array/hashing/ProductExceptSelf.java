@@ -14,8 +14,8 @@ Explanation of logic d=for sol1:
 L=[1,1,2,6]
 R=[24,12,4,1]
 
-Prefix = [1,1*1,2*1,3*2] = [1,1,2,6];
-PostFix= [2*12,3*4,4*1,1] =[24,12,4,1]
+Prefix = [1,1*1,2*1,3*2*1] = [1,1,2,6];
+PostFix= [2*3*4*1,3*4*1,4*1,1] =[24,12,4,1]
 Result = [24,12,8,6]
  */
 public class ProductExceptSelf {

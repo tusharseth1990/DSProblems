@@ -2,7 +2,7 @@ package stackandqueue;
 
 import java.util.Stack;
 
-public class RPN {
+public class ReversePolishNotation {
     public int evalRPN(String[] tokens) {
         Stack<Integer> stack = new Stack<>();
         for (String token : tokens) {

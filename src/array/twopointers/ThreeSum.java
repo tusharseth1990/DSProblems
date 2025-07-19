@@ -7,6 +7,7 @@ import java.util.*;
 //
 //        Notice that the solution set must not contain duplicate triplets.
 //n logn + n2 = n2
+// keeping one fix & use two sum II
 public class ThreeSum {
 
 

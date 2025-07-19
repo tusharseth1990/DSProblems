@@ -11,15 +11,42 @@ public class GenerateParenthesis {
         sol.generateParenthesis(3);
     }
 
-    Stack<Character> stack = new Stack<>();
-    List<String> res = new ArrayList<>();
-
-    public List<String> generateParenthesis(int n) {
-        backtrack(0, 0, n);
+    public List<String> generateParenthesis ( int n){
+        List<String> res = new ArrayList<>();
+        StringBuilder stack = new StringBuilder();
+        backtrack(0, 0, n, res, stack);
         return res;
     }
 
-    private void backtrack(int openN, int closedN, int n) {
+    private void backtrack ( int openN, int closedN, int n, List<String > res, StringBuilder stack){
+        if (openN == closedN && openN == n) {
+            res.add(stack.toString());
+            return;
+        }
+
+        if (openN < n) {
+            stack.append('(');
+            backtrack(openN + 1, closedN, n, res, stack);
+            stack.deleteCharAt(stack.length() - 1);
+        }
+        if (closedN < openN) {
+            stack.append(')');
+            backtrack(openN, closedN + 1, n, res, stack);
+            stack.deleteCharAt(stack.length() - 1);
+        }
+    }
+
+
+
+    Stack<Character> stack = new Stack<>();
+    List<String> res = new ArrayList<>();
+
+    public List<String> generateParenthesisII(int n) {
+        backtrackII(0, 0, n);
+        return res;
+    }
+
+    private void backtrackII(int openN, int closedN, int n) {
         if (openN == closedN && closedN == n) {
             Iterator vale = stack.iterator();
             String temp = "";
@@ -30,13 +57,15 @@ public class GenerateParenthesis {
         }
         if (openN < n) {
             stack.push('(');
-            backtrack(openN + 1, closedN, n);
+            backtrackII(openN + 1, closedN, n);
             stack.pop();
         }
         if (closedN < openN) {
             stack.push(')');
-            backtrack(openN, closedN + 1, n);
+            backtrackII(openN, closedN + 1, n);
             stack.pop();
         }
+
+
     }
 }

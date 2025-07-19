@@ -17,7 +17,7 @@ public class Soduku {
             cols[r] = new HashSet<Character>();
             boxes[r] = new HashSet<Character>();
         }
-
+        // r=1, c=1
         for (int r = 0; r < N; r++) {
             for (int c = 0; c < N; c++) {
                 char val = board[r][c];

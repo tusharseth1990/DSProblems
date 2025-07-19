@@ -76,7 +76,7 @@ public class TopK {
 
         // init heap 'the less frequent element first'
         Queue<Integer> heap = new PriorityQueue<>(
-                (n1, n2) -> count.get(n1) - count.get(n2));
+                Comparator.comparingInt(count::get));
 
 
 

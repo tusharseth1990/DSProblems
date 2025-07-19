@@ -638,6 +638,41 @@ public class BinaryTree {
     }
 
 
+    //log(n) - time complexity
+    // LCA with two nodes
+    public Node lowestCommonAncestorRec(Node root, Node p, Node q) {
+        if (root == null || p == null || q == null) {
+            return null;
+        }
+        if (Math.max(p.data, q.data) < root.data) {
+            return lowestCommonAncestorRec(root.left, p, q);
+        } else if (Math.min(p.data, q.data) > root.data) {
+            return lowestCommonAncestorRec(root.right, p, q);
+        } else {
+            return root;
+        }
+    }
+
+    /* Function to find LCA of n1 and n2 values are given. The function assumes that both
+    n1 and n2 are present in BST */
+    //log(n) - time complexity
+    //
+
+    Node lca(Node node, int n1, int n2) {
+        if (node == null)
+            return null;
+
+        // If both n1 and n2 are smaller than root, then LCA lies in left
+        if (node.data > n1 && node.data > n2)
+            return lca(node.left, n1, n2);
+
+        // If both n1 and n2 are greater than root, then LCA lies in right
+        if (node.data < n1 && node.data < n2)
+            return lca(node.right, n1, n2);
+
+        return node;
+    }
+
 
     //deepest node - last node of a BT is deepest node
     //The last node processed from the queue in level order is the deepest node in the binary tree
@@ -676,6 +711,58 @@ public class BinaryTree {
         return isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot);
     }
 
+    // BFS
+    public List<Integer> rightSideViewBFS(Node root) {
+        List<Integer> res = new ArrayList<>();
+        Queue<Node> q = new LinkedList<>();
+        q.offer(root);
+
+        while (!q.isEmpty()) {
+            Node rightSide = null;
+            int qLen = q.size();
+
+            for (int i = 0; i < qLen; i++) {
+                Node node = q.poll();
+                if (node != null) {
+                    rightSide = node;
+                    q.offer(node.left);
+                    q.offer(node.right);
+                }
+            }
+            if (rightSide != null) {
+                res.add(rightSide.data);
+            }
+        }
+        return res;
+    }
+
+     // Recursive function to print right view of a binary tree.
+    void rightViewUtil(Node node, int level, Max_level max_level) {
+
+        // Base Case
+        if (node == null)
+            return;
+
+        // If this is the last Node of its level
+        if (max_level.max_level < level) {
+            System.out.print(node.data + " ");
+            max_level.max_level = level;
+        }
+
+        // Recur for right subtree first, then left subtree
+        rightViewUtil(node.right, level + 1, max_level);
+        rightViewUtil(node.left, level + 1, max_level);
+    }
+
+    void rightView() {
+        rightView(root);
+    }
+
+    // A wrapper over rightViewUtil()
+    void rightView(Node node) {
+
+        rightViewUtil(node, 1, max);
+    }
 
     //width of a binary tree
     int getMaxWidth(Node node) {
@@ -707,7 +794,6 @@ public class BinaryTree {
                     + getWidth(node.right, level - 1);
         return 0;
     }
-
 
 
     //TO-DO min. depth of a BT
@@ -815,33 +901,7 @@ public class BinaryTree {
 
     Max_level max = new Max_level();
 
-    // Recursive function to print right view of a binary tree.
-    void rightViewUtil(Node node, int level, Max_level max_level) {
 
-        // Base Case
-        if (node == null)
-            return;
-
-        // If this is the last Node of its level
-        if (max_level.max_level < level) {
-            System.out.print(node.data + " ");
-            max_level.max_level = level;
-        }
-
-        // Recur for right subtree first, then left subtree
-        rightViewUtil(node.right, level + 1, max_level);
-        rightViewUtil(node.left, level + 1, max_level);
-    }
-
-    void rightView() {
-        rightView(root);
-    }
-
-    // A wrapper over rightViewUtil()
-    void rightView(Node node) {
-
-        rightViewUtil(node, 1, max);
-    }
 //Pending questions
     //Print Bottom View of Binary Tree
     //Print a Binary Tree in Vertical Order
@@ -1008,43 +1068,7 @@ public class BinaryTree {
     }
 
 
-    //log(n) - time complexity
-    // LCA with two nodes
-    public Node lowestCommonAncestorRec(Node root, Node p, Node q) {
-        if (root == null || p == null || q == null) {
-            return null;
-        }
-        if (Math.max(p.data, q.data) < root.data) {
-            return lowestCommonAncestorRec(root.left, p, q);
-        } else if (Math.min(p.data, q.data) > root.data) {
-            return lowestCommonAncestorRec(root.right, p, q);
-        } else {
-            return root;
-        }
-    }
 
-
-
-
-    /* Function to find LCA of n1 and n2 values are given. The function assumes that both
-    n1 and n2 are present in BST */
-    //log(n) - time complexity
-    //
-
-    Node lca(Node node, int n1, int n2) {
-        if (node == null)
-            return null;
-
-        // If both n1 and n2 are smaller than root, then LCA lies in left
-        if (node.data > n1 && node.data > n2)
-            return lca(node.left, n1, n2);
-
-        // If both n1 and n2 are greater than root, then LCA lies in right
-        if (node.data < n1 && node.data < n2)
-            return lca(node.right, n1, n2);
-
-        return node;
-    }
 
     public List<Integer> rightSideView(Node root) {
         List<Integer> res = new ArrayList<>();
