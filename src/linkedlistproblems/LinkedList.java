@@ -76,7 +76,7 @@ public class LinkedList {
             return; 
         } 
   
-        // Find previous node of the node to be deleted 
+        // Find previous node of the LL to be deleted
         for (int i=0; temp!=null && i<position-1; i++) 
             temp = temp.next; 
   
@@ -102,7 +102,7 @@ public class LinkedList {
         return count; 
     } 
 	public int countRec(Node node) {
-		if(head == null)
+		if(node == null)
 			return 0;
 		
 		return 1+ countRec(node.next);
@@ -250,17 +250,7 @@ public class LinkedList {
 	          } 
 	      }
 
-	int countNodes( Node n)
-	{
-		int res = 1;
-		Node temp = n;
-		while (temp.next != n)
-		{
-			res++;
-			temp = temp.next;
-		}
-		return res;
-	}
+
 
 	/* This function detects and counts loop
 	     nodes in the list. If loop is not there  
@@ -282,8 +272,19 @@ public class LinkedList {
 	       
 	         /* Return 0 to indeciate that there is no loop*/
 	         return 0;  
-	     } 
-	      
+	     }
+
+	int countNodes( Node n)
+	{
+		int res = 1;
+		Node temp = n;
+		while (temp.next != n)
+		{
+			res++;
+			temp = temp.next;
+		}
+		return res;
+	}
 	   // Returns true if the loop is removed from the linked 
 	      // list else returns false. 
 	      static boolean removeLoop(Node h) 
@@ -339,7 +340,7 @@ public class LinkedList {
 	        } 
 	  
 	    } 
-	    
+	    // 1-> 2 -> 3 -> 4
 	    //Program to move last element to front in a given linked list
 	    void moveToFront() 
 	    { 
@@ -370,7 +371,10 @@ public class LinkedList {
 	        /* Change head to point to last node. */
 	        head = last; 
 	    }                  
-	  
+
+
+	  //1-> 2 -> 3 -> 4 -> 5 -> 6
+	  //
 	 // Java program to pairwise swap elements of a linked list 
 	    void pairWiseSwap() 
 	    { 
@@ -382,7 +386,8 @@ public class LinkedList {
 	            /* Swap the data */
 	            int k = temp.data; 
 	            temp.data = temp.next.data; 
-	            temp.next.data = k; 
+	            temp.next.data = k;
+
 	            temp = temp.next.next; 
 	        } 
 	    } 
@@ -445,8 +450,23 @@ public class LinkedList {
 	        } 
 
 	        return prev;
-	    } 
-	    
+	    }
+
+	public Node reverseLinkedList(Node head) {
+		if (head == null) {
+			return null;
+		}
+
+		Node newHead = head;
+		if (head.next != null) {
+			newHead = reverseLinkedList(head.next);
+			head.next.next = head;
+		}
+		head.next = null;
+
+		return newHead;
+	}
+
 	    Node reverseKNodes(Node head, int k)
 	    {
 	        if(head == null)
@@ -636,6 +656,42 @@ public class LinkedList {
 	        }
 
 	    }
+		// 1 2 4
+	 	// 1 3 5
+		// l3
+		public Node mergeTwoLinkedLists(Node l1, Node l2) {
+			Node l3 = null;
+			if (l1 == null) {
+				return l2;
+			}
+			else if (l2 == null) {
+				return l1;
+			}
+
+			while(l1!=null && l2!=null)
+			{
+				if(l1.data <= l2.data)
+				{
+					l3.next = l1;
+					l1=l1.next;
+				}
+				else{
+					l3.next = l2;
+					l2=l2.next;
+				}
+				l3 =l3.next;
+			}
+			if(l1!=null)
+			{
+				l3.next = l1;
+			}
+			else{
+				l3.next =l2;
+			}
+			return l3.next;
+		}
+
+
 	    
 	    public Node mergeTwoListsReducingSpaceComplexity(Node l1, Node l2) {
 	        // maintain an unchanging reference to node ahead of the return node.
@@ -682,7 +738,10 @@ public class LinkedList {
 		l1.append(15);
 		l1.append(15);
 		l1.append(7);	
-		l1.append(5);		
+		l1.append(5);
+		int count =l1.countRec(l1.head);
+		System.out.println(" count is "+ count);
+
 	}
 
 }
