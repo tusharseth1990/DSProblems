@@ -185,6 +185,7 @@ public class BinaryTree {
     //				1
     //			2		3
     //		  4	  5
+    //
     //iterative Pre-order traversal
 
     //      IN-order Traversal : 4 2 5 1 3  (L Root R)
@@ -238,7 +239,6 @@ public class BinaryTree {
             while (!s2.isEmpty()) {
                 Node temp = s2.pop();
                 System.out.println(temp.data);
-
             }
         }
 
@@ -460,6 +460,7 @@ public class BinaryTree {
     // DFS // create a mirror image.
     // swaps left child with right child and do recursively for left/right sub-trees,
 
+    //BFS
     static void invertTreeOrMirror(Node root) {
         if (root == null)
             return;
@@ -575,6 +576,8 @@ public class BinaryTree {
         return isBalancedRec(root) > 0;
     }
 
+    //DFS
+    //O(p+q)
     private boolean isSameTree(Node p, Node q) {
         if (p == null && q == null) {
             return true;
@@ -587,6 +590,38 @@ public class BinaryTree {
         }
     }
 
+    //O(n) - space and time
+    public boolean isSameTreeBFS(Node p, Node q) {
+        Queue<Node> q1 = new LinkedList<>();
+        Queue<Node> q2 = new LinkedList<>();
+        q1.add(p);
+        q2.add(q);
+
+        while (!q1.isEmpty() && !q2.isEmpty()) {
+            for (int i = q1.size(); i > 0; i--) {
+                Node nodeP = q1.poll();
+                Node nodeQ = q2.poll();
+
+                if (nodeP == null && nodeQ == null) continue;
+                if (nodeP == null || nodeQ == null || nodeP.data != nodeQ.data)
+                    return false;
+
+                q1.add(nodeP.left);
+                q1.add(nodeP.right);
+                q2.add(nodeQ.left);
+                q2.add(nodeQ.right);
+            }
+        }
+
+        return true;
+    }
+
+    public boolean isSubtree(Node root, Node subRoot) {
+        if (subRoot == null || isSameTree(root, subRoot)) return true;
+        if (root == null) return false;
+
+        return isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot);
+    }
 
     //check Two binary trees are structural identical same or not // same tree
     public boolean identicalOrNot(Node root1, Node root2) {
@@ -597,7 +632,6 @@ public class BinaryTree {
         else
             return (identicalOrNot(root1.left, root2.left) &&
                     identicalOrNot(root1.right, root2.right));
-
     }
 
     //is tree is symmetric
@@ -634,7 +668,31 @@ public class BinaryTree {
             return false;
         }
         // The left and right subtree must also be valid.
-        return validate(root.right, root.data, high) && validate(root.left, low, root.data);
+        return (validate(root.left, low, root.data) && validate(root.right, root.data, high));
+    }
+
+ /* Function to find LCA of n1 and n2 values are given. The function assumes that both
+    n1 and n2 are present in BST */
+    //log(n) - time complexity
+    //Base Case: If the current node is NULL, return NULL because there is no tree to search.
+    //Left Subtree Check: If both n1 and n2 are smaller than the current node's value, the LCA must be in the left subtree.
+    //Right Subtree Check: If both n1 and n2 are greater than the current node's value, the LCA must be in the right subtree.
+    //Current Node is LCA: If one value is smaller and the other is greater (or one matches the current node),
+    // the current node is the LCA. Return it
+
+    Node lca(Node node, int n1, int n2) {
+        if (node == null)
+            return null;
+
+        // If both n1 and n2 are smaller than root, then LCA lies in left
+        if (node.data > n1 && node.data > n2)
+            return lca(node.left, n1, n2);
+
+        // If both n1 and n2 are greater than root, then LCA lies in right
+        if (node.data < n1 && node.data < n2)
+            return lca(node.right, n1, n2);
+
+        return node;
     }
 
 
@@ -651,26 +709,6 @@ public class BinaryTree {
         } else {
             return root;
         }
-    }
-
-    /* Function to find LCA of n1 and n2 values are given. The function assumes that both
-    n1 and n2 are present in BST */
-    //log(n) - time complexity
-    //
-
-    Node lca(Node node, int n1, int n2) {
-        if (node == null)
-            return null;
-
-        // If both n1 and n2 are smaller than root, then LCA lies in left
-        if (node.data > n1 && node.data > n2)
-            return lca(node.left, n1, n2);
-
-        // If both n1 and n2 are greater than root, then LCA lies in right
-        if (node.data < n1 && node.data < n2)
-            return lca(node.right, n1, n2);
-
-        return node;
     }
 
 
@@ -704,14 +742,30 @@ public class BinaryTree {
     }
 
 
-    public boolean isSubtree(Node root, Node subRoot) {
-        if (subRoot == null || isSameTree(root, subRoot)) return true;
-        if (root == null) return false;
 
-        return isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot);
-    }
-
-    // BFS
+//              1
+    //     2         3
+ //           5        4
+ //        7
+    // BFS // each level we need the right most node
+    //Q = 1
+    //Result = 1
+    //Q = 2  3
+    //Result = 1, 3
+    //Q = 3, 5
+    //Result = 1, 3
+//Q = 5
+//Result = 1, 3
+//Q = 5 , 4
+//Result = 1, 3
+//Q = 5 , 4
+//Result = 1, 3 , 4
+//Q =  4
+//Result = 1, 3 , 4
+//Q = 4  7
+//Result = 1, 3 , 4
+//Q =  7
+//Result = 1, 3 , 4, 7
     public List<Integer> rightSideViewBFS(Node root) {
         List<Integer> res = new ArrayList<>();
         Queue<Node> q = new LinkedList<>();
@@ -1010,6 +1064,42 @@ public class BinaryTree {
         }
     }
 
+    class NodeWithMax {
+        Node node;
+        int maxVal;
+
+        NodeWithMax(Node node, int maxVal) {
+            this.node = node;
+            this.maxVal = maxVal;
+        }
+    }
+    //O(n)
+    public int goodNodesII(Node root) {
+        if (root == null) return 0;
+
+        int res = 0;
+        Queue<NodeWithMax> q = new LinkedList<>();
+        q.offer(new NodeWithMax(root, Integer.MIN_VALUE));
+
+        while (!q.isEmpty()) {
+            NodeWithMax current = q.poll();
+            Node node = current.node;
+            int maxVal = current.maxVal;
+
+            if (node.data >= maxVal) {
+                res++;
+            }
+
+            if (node.left != null) {
+                q.offer(new NodeWithMax(node.left, Math.max(maxVal, node.data)));
+            }
+            if (node.right != null) {
+                q.offer(new NodeWithMax(node.right, Math.max(maxVal, node.data)));
+            }
+        }
+        return res;
+    }
+
     public int goodNodes(Node root) {
         return helper(root, -99999);
     }
@@ -1024,6 +1114,9 @@ public class BinaryTree {
 
         return res;
     }
+
+
+
     // Returns maximum path sum in tree with given root 
     int findMaxSum(Node node) {
 
