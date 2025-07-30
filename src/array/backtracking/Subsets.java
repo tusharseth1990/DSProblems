@@ -15,10 +15,13 @@ public class Subsets {
     }
 
     private void dfs(int[] nums, int i, List<Integer> subset, List<List<Integer>> res) {
+
+        //once it is equal to length means all calc done return all subsets
         if (i >= nums.length) {
             res.add(new ArrayList<>(subset));
             return;
         }
+
         subset.add(nums[i]);
         //decision to include num[i]
         dfs(nums, i + 1, subset, res);

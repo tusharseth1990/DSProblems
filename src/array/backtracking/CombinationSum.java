@@ -9,7 +9,7 @@ public class CombinationSum {
     // time : o(2^t/m), space : o(t/m)
 
     public List<List<Integer>> combinationSum(int[] nums, int target) {
-        res = new ArrayList<List<Integer>>();
+        res = new ArrayList<>();
         List<Integer> cur = new ArrayList();
         backtrack(nums, target, cur, 0);
         return res;
@@ -20,6 +20,7 @@ public class CombinationSum {
             res.add(new ArrayList(cur));
             return;
         }
+        // it can become -ve when target - number
         if (target < 0 || i >= nums.length) {
             return;
         }
