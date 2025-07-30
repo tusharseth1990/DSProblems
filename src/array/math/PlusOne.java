@@ -2,6 +2,9 @@ package array.math;
 
 public class PlusOne {
 
+    //900 -> 109 -> 901
+    //909 -> 019 -> 910
+    //999 ->
     public int[] plusOne(int[] digits) {
         int n = digits.length;
 

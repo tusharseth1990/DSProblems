@@ -26,8 +26,15 @@ public class EvenOddListJava8 {
 //            booleanListEntry.getValue().forEach(System.out::println);
 //        });
 
-   list.stream().collect(Collectors.partitioningBy(x -> x%2 == 0)).entrySet().stream().forEach(booleanListEntry -> System.out.println(booleanListEntry.getValue()));
+        System.out.println("test");
+   list.stream().collect(Collectors.partitioningBy(x -> x % 2 == 0)).forEach((key, value1) -> System.out.println("Key: "+ key + "value" + value1));
+   list.stream().collect(Collectors.partitioningBy(x -> x % 2 == 0)).get(Boolean.TRUE).forEach(System.out::println);
 
+        list.stream().collect(Collectors.partitioningBy(x -> x % 2 == 0)).forEach((aBoolean, integers) -> {
+            if (aBoolean == Boolean.TRUE){
+                System.out.println(integers);
+            }
+        });
 
     }
 

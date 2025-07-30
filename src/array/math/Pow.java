@@ -31,6 +31,7 @@ public class Pow {
                 x = 1 / x;
             }
         }
+        //n is +ve or > 0
         if (n % 2 == 0) { //even
             return myPow(x * x, n / 2);
         } else { //odd

@@ -30,13 +30,18 @@ public class FrequencyMap {
         System.out.println();
         Stream.of(str.toLowerCase().replaceAll("\\s", "").split(""))
                 .collect(Collectors.groupingBy(val -> val, Collectors.counting()))
-                .entrySet().stream().sorted(Map.Entry.comparingByValue((o1, o2) -> o2.compareTo(o1)))
+                .entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
                 .forEach(ch -> System.out.println(ch.getKey() + "=" + ch.getValue()));
     }
 
 
-    private static void characterCountEasy(String str){
-        var countMap = str.replaceAll("\\s", "").chars().mapToObj(value -> (char) value).collect(Collectors.groupingBy(character -> character, Collectors.counting()));
+    private static void characterCountEasy(String str) {
+        var countMap = str.replaceAll("\\s", "")
+                .chars()
+                .mapToObj(value -> (char) value)
+                .collect(Collectors
+                        .groupingBy(Character::charValue,Collectors.counting()));
+//                .collect(Collectors.groupingBy(character -> character, Collectors.counting()));
         System.out.println(countMap);
     }
 
@@ -48,7 +53,6 @@ public class FrequencyMap {
 //        characterCountEasy("Java Concept Of The Day");
         characterCountMap("Java Concept Of The Day");
     }
-
 
 
 }

@@ -26,6 +26,14 @@ public class HammingWeight {
     // logic: number & 1
     //then shift right
     // you need to treat n as an unsigned value
+    //Time complexity:
+    //O(1)
+    //Space complexity:
+    //O(1)
+    // Iterating over a 32 bit integer and then doing an & operation with 1
+    // always returns the last set bit where we can count that
+    // & then shifting the number by 1 digit
+    //  1011 & 0001 then 101 & 001 and ....
     public int hammingWeightMethod2(int n) {
         int count = 0;
         int mask = 1;
