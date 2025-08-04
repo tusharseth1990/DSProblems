@@ -1,4 +1,4 @@
-package graph;
+package graphs;
 
 
 import java.util.ArrayList;
@@ -37,7 +37,7 @@ class Node {
 
             // Create a clone for the given node.
             // Note that we don't have cloned neighbors as of now, hence [].
-            Node cloneNode = new Node(node.val, new ArrayList());
+            Node cloneNode = new Node(node.val, new ArrayList<>());
             // The key is original node and value being the clone node.
             visited.put(node, cloneNode);
 
