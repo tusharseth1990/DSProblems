@@ -42,6 +42,13 @@ class LRUCache {
         this.right.prev = this.left;
     }
 
+    /*
+    --> If the key exists in the cache:
+        Removes the node from its current position.
+        Re-inserts it at the most recently used position (right).
+        Returns the value.
+    --> If the key does not exist, returns -1.
+     */
     public int get(int key) {
         if (cache.containsKey(key)) {
             remove(cache.get(key));
@@ -51,7 +58,14 @@ class LRUCache {
             return -1;
         }
     }
-
+/*
+-->If the key already exists:
+    Removes the old node.
+-->Adds a new node with the given key and value.
+-->If the cache exceeds its capacity:
+    Removes the least recently used node (next to left).
+    Deletes it from the HashMap.
+ */
     public void put(int key, int value) {
         if (cache.containsKey(key)) {
             remove(cache.get(key));
@@ -68,6 +82,7 @@ class LRUCache {
     }
 
     // remove node from list
+    //Removes a node from the doubly linked list by updating its neighbors' pointers.
     public void remove(Node node) {
         Node prev = node.prev;
         Node next = node.next;
@@ -77,6 +92,7 @@ class LRUCache {
     }
 
     // insert node at right
+    //Inserts a node at the most recently used position (before right).
     public void insert(Node node) {
         Node prev = this.right.prev;
         Node next = this.right;
