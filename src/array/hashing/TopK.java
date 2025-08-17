@@ -21,7 +21,7 @@ public class TopK {
     public List<Integer> topKFrequent(int[] nums, int k) {
 
         List<Integer>[] bucket = new ArrayList[nums.length + 1];
-        Map<Integer, Integer> frequencyMap = new HashMap<Integer, Integer>();
+        Map<Integer, Integer> frequencyMap = new HashMap<>();
 
         for (int n : nums) {
             frequencyMap.put(n, frequencyMap.getOrDefault(n, 0) + 1);
