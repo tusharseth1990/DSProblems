@@ -6,7 +6,7 @@ import java.util.*;
 // such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
 //
 //        Notice that the solution set must not contain duplicate triplets.
-//n logn + n2 = n2
+//n log n + n^2 = n^2
 // keeping one fix & use two sum II
 public class ThreeSum {
 

@@ -14,33 +14,14 @@ public class Palindrome {
     Output: true
     Explanation: "amanaplanacanalpanama" is a palindrome.
      */
-    public boolean isPalindromeEasy(String str) {
-
-        if (Objects.equals(str, "") || str.isEmpty() || str.trim() == "") {
-            return true;
-        }
-        str = str.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
-        if (str == "" || str.isEmpty() || str.trim() == "") {
-            return true;
-        }
-        char ch[] = str.toCharArray();
-        int left, right = ch.length - 1;
-        char temp;
-        for (left = 0; left < right; left++, right--) {
-            temp = ch[left];
-            ch[left] = ch[right];
-            ch[right] = temp;
-        }
-        return (str.equals(String.valueOf(ch)));
-    }
 
     public boolean isPalindrome(String s) {
         int i = 0;
         int j = s.length() - 1;
         while (i < j) {
 
-            Character start = s.charAt(i);
-            Character end = s.charAt(j);
+            char start = s.charAt(i);
+            char end = s.charAt(j);
 
             if (!Character.isLetterOrDigit(start)) {
                 i++;
@@ -62,4 +43,25 @@ public class Palindrome {
 
         return true;
     }
+    public boolean isPalindromeEasy(String str) {
+
+        if (Objects.equals(str, "") || str.isEmpty() || str.trim().isEmpty()) {
+            return true;
+        }
+        str = str.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+        if (str == "" || str.isEmpty() || str.trim() == "") {
+            return true;
+        }
+        char ch[] = str.toCharArray();
+        int left, right = ch.length - 1;
+        char temp;
+        for (left = 0; left < right; left++, right--) {
+            temp = ch[left];
+            ch[left] = ch[right];
+            ch[right] = temp;
+        }
+        return (str.equals(String.valueOf(ch)));
+    }
+
+
 }
