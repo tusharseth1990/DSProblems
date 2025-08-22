@@ -1,4 +1,4 @@
-package array;
+package practise;
 
 import java.util.*;
 import java.util.stream.Collectors;

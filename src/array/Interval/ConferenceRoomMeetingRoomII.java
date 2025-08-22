@@ -15,7 +15,7 @@ public class ConferenceRoomMeetingRoomII {
 
 //two pointer
     public int minMeetingRooms1(List<Interval> intervals) {
-        if (intervals.size() == 0) {
+        if (intervals.isEmpty()) {
             return 0;
         }
 

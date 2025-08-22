@@ -1,4 +1,4 @@
-package array;
+package practise;
 
 /*
 Given an array of n integers where each value represents the number of chocolates in a packet.
