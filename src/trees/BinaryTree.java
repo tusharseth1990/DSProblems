@@ -1116,6 +1116,29 @@ public class BinaryTree {
     }
 
 
+    public static List<Integer> bottomRightView(Node root) {
+        List<Integer> result = new ArrayList<>();
+        if (root == null) return result;
+
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(root);
+
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            Node node = null;
+
+            // Traverse current level
+            for (int i = 0; i < size; i++) {
+                node = queue.poll();
+                if (node.left != null) queue.offer(node.left);
+                if (node.right != null) queue.offer(node.right);
+            }
+            // Last node of this level (rightmost)
+            result.add(node.data);
+        }
+        return result;
+    }
+
 
     // Returns maximum path sum in tree with given root 
     int findMaxSum(Node node) {
