@@ -680,21 +680,20 @@ public class BinaryTree {
     //Current Node is LCA: If one value is smaller and the other is greater (or one matches the current node),
     // the current node is the LCA. Return it
 
-    Node lca(Node node, int n1, int n2) {
-        if (node == null)
-            return null;
+    public Node lowestCommonAncestor(Node root, Node p, Node q) {
+        Node cur = root;
 
-        // If both n1 and n2 are smaller than root, then LCA lies in left
-        if (node.data > n1 && node.data > n2)
-            return lca(node.left, n1, n2);
-
-        // If both n1 and n2 are greater than root, then LCA lies in right
-        if (node.data < n1 && node.data < n2)
-            return lca(node.right, n1, n2);
-
-        return node;
+        while (cur != null) {
+            if (p.data > cur.data && q.data > cur.data) {
+                cur = cur.right;
+            } else if (p.data < cur.data && q.data < cur.data) {
+                cur = cur.left;
+            } else {
+                return cur;
+            }
+        }
+        return null;
     }
-
 
     //log(n) - time complexity
     // LCA with two nodes
