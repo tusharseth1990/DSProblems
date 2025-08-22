@@ -765,6 +765,7 @@ public class BinaryTree {
 //Result = 1, 3 , 4
 //Q =  7
 //Result = 1, 3 , 4, 7
+    //each level having the right most node
     public List<Integer> rightSideViewBFS(Node root) {
         List<Integer> res = new ArrayList<>();
         Queue<Node> q = new LinkedList<>();
@@ -1100,16 +1101,16 @@ public class BinaryTree {
     }
 
     public int goodNodes(Node root) {
-        return helper(root, -99999);
+        return dfsHelper(root, root.data);
     }
 
-    public int helper(Node root, int max) {
+    public int dfsHelper(Node root, int max) {
         if (root == null) return 0;
 
         int res = root.data >= max ? 1 : 0;
 
-        res += helper(root.left, Math.max(root.data, max));
-        res += helper(root.right, Math.max(root.data, max));
+        res += dfsHelper(root.left, Math.max(root.data, max));
+        res += dfsHelper(root.right, Math.max(root.data, max));
 
         return res;
     }
