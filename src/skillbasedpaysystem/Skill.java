@@ -1,0 +1,5 @@
+package skillbasedpaysystem;
+
+public enum Skill {
+    BAKERY, CHECKOUT_CASHIER, CUSTOMER_SERVICE,SHIFT_LEADER, SECURITY, CLEANING, DELIVERY_DRIVER;
+}

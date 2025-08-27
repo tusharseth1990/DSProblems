@@ -12,7 +12,7 @@ public class FrequencyMap {
         System.out.println("freq Map");
         Stream.of(str.toLowerCase().replaceAll("\\s", "").split(""))
                 .collect(Collectors.groupingBy(val -> val, LinkedHashMap::new, Collectors.counting()))
-                .entrySet().forEach(ch -> System.out.println(ch.getKey() + "=" + ch.getValue()));
+                .forEach((key, value) -> System.out.println(key + "=" + value));
 
     }
 
