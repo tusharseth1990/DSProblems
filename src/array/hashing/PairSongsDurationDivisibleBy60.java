@@ -24,7 +24,7 @@ public class PairSongsDurationDivisibleBy60 {
     }
 
     public int numPairsDivisibleBy60Solution(int[] time){
-        int seen[] = new int[60];
+        int[] seen = new int[60];
         int count = 0;
         for (int t :
                 time) {

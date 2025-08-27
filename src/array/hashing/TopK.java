@@ -69,7 +69,7 @@ public class TopK {
 
         // 1. build hash map : character and how often it appears
         // O(N) time
-        Map<Integer, Integer> count = new HashMap();
+        Map<Integer, Integer> count = new HashMap<>();
         for (int n: nums) {
             count.put(n, count.getOrDefault(n, 0) + 1);
         }
@@ -93,6 +93,41 @@ public class TopK {
         // O(k log k) time
         int[] top = new int[k];
         for(int i = k - 1; i >= 0; --i) {
+            top[i] = heap.poll();
+        }
+        return top;
+    }
+
+    public int[] topKFrequentSol2(int[] nums, int k) {
+        // O(1) time
+        if (k == nums.length) {
+            return nums;
+        }
+
+        // 1. build hash map : character and how often it appears
+        // O(N) time
+        Map<Integer, Integer> count = new HashMap<>();
+        for (int n: nums) {
+            count.put(n, count.getOrDefault(n, 0) + 1);
+        }
+
+        // max heap
+        Queue<Integer> heap = new PriorityQueue<>(
+                Comparator.reverseOrder());
+
+        // 2. keep k top frequent elements in the heap
+        // O(N log k) < O(N log N) time
+        for (int n: count.keySet()) {
+            heap.add(n);
+            if (heap.size() > k) heap.poll();
+        }
+        System.out.println("after heap");
+        heap.forEach(System.out::println);
+
+        // 3. build an output array
+        // O(k log k) time
+        int[] top = new int[k];
+        for(int i = 0; i < k; i++) {
             top[i] = heap.poll();
         }
         return top;
@@ -131,9 +166,9 @@ public class TopK {
 
 
     public static void main(String[] args) {
-        int[] arr= {1,1,1,2,2,2,3,3,4,5,6};
+        int[] arr= {1,1,1,2,2,2,2,3,3,4,5,6};
         TopK topK= new TopK();
-        int[] ans= topK.topKFrequentSol1(arr,2);
+        int[] ans= topK.topKFrequentSol2(arr,2);
         System.out.println("output");
 //        Arrays.stream(ans).forEach(value -> System.out.println(value));
         System.out.println(topK.topKFrequent(arr, 2));

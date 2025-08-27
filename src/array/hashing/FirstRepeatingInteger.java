@@ -1,7 +1,7 @@
 package array.hashing;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class FirstRepeatingInteger {
 
@@ -26,10 +26,26 @@ public class FirstRepeatingInteger {
         }
     }
 
+    static int firstRepeatingElementII(int[] arr)
+    {
+        Set<Integer> set = new HashSet<>();
+        for(int i=0;i< arr.length;i++ )
+        {
+            if(set.contains(arr[i]))
+            {
+                return arr[i];
+            }
+            else{
+                set.add(arr[i]);
+            }
+        }
+        return -1;
+    }
 
     public static void main(String[] args) {
         int[] arr = { 10, 5, 3, 4, 3, 5, 6 };
-        firstRepeatingElement(arr);
-        //System.out.println(k);
+
+        int y = firstRepeatingElementII(arr);
+        System.out.println(y);
     }
 }

@@ -1,4 +1,4 @@
-package array.hashing;
+package java8;
 
 import java.util.*;
 

@@ -9,9 +9,9 @@ public class Soduku {
         int N = 9;
 
         // Use hash set to record the status
-        HashSet<Character>[] rows = new HashSet[N];
-        HashSet<Character>[] cols = new HashSet[N];
-        HashSet<Character>[] boxes = new HashSet[N];
+        Set<Character>[] rows = new HashSet[N];
+        Set<Character>[] cols = new HashSet[N];
+        Set<Character>[] boxes = new HashSet[N];
         for (int r = 0; r < N; r++) {
             rows[r] = new HashSet<>();
             cols[r] = new HashSet<>();
