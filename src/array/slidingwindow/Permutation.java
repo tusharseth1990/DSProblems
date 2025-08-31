@@ -9,14 +9,16 @@ import java.util.HashMap;
 //Both strings only contain lowercase letters.
 //
 //Example 1:
-//
+//                         iii
 //Input: s1 = "abc", s2 = "lecabee"
+//  lec eca cab abe bee
 //
 //Output: true
 public class Permutation {
 
 //o(26*n)
 //sliding window
+
     public boolean checkInclusion(String s1, String s2) {
         if (s1.length() > s2.length())
             return false;
@@ -30,6 +32,7 @@ public class Permutation {
             if (matches(s1map, s2map))
                 return true;
             s2map[s2.charAt(i + s1.length()) - 'a']++;
+
             s2map[s2.charAt(i) - 'a']--;
         }
         return matches(s1map, s2map);
@@ -70,4 +73,8 @@ public class Permutation {
         return true;
     }
 
+    public static void main(String[] args) {
+        Permutation p = new Permutation();
+        p.checkInclusion("abc","lecabee");
+    }
 }

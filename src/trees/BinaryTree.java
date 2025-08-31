@@ -217,8 +217,10 @@ public class BinaryTree {
 
         //4             5
 
+
     //Left Right Data
     //4 5 2 3 1
+
     public void postOrderTraversal(Node root) {
         Stack<Node> s1 = new Stack<>();
         Stack<Node> s2 = new Stack<>();
@@ -373,6 +375,50 @@ public class BinaryTree {
         }
     }
 
+    static ArrayList<Integer> findSpiral(Node root) {
+        ArrayList<Integer> res = new ArrayList<>();
+        if (root == null) return res;
+
+        Deque<Node> dq = new ArrayDeque<>();
+        dq.add(root);
+
+        // 'reverse' indicates direction of traversal at current level
+        boolean reverse = true;
+
+        // Loop until all levels are processed
+        while (!dq.isEmpty()) {
+            int n = dq.size();
+
+            // Process all nodes at current level
+            while (n-- > 0) {
+                // If reverse is true, process from right to left
+                if (reverse) {
+                    Node curr = dq.removeLast();
+                    res.add(curr.data);
+
+                    // Add right child first, then left child
+                    // to the front of deque
+                    if (curr.right != null) dq.addFirst(curr.right);
+                    if (curr.left != null) dq.addFirst(curr.left);
+                }
+                // Else process from left to right
+                else {
+                    Node curr = dq.removeFirst();
+                    res.add(curr.data);
+
+                    // Add left child first, then right child to
+                    // the end of deque
+                    if (curr.left != null) dq.addLast(curr.left);
+                    if (curr.right != null) dq.addLast(curr.right);
+                }
+            }
+
+            // Toggle direction for next level
+            reverse = !reverse;
+        }
+
+        return res;
+    }
 
     //find the no of nodes in BT
     public int NoOfLeavesInBTree(Node root) {
@@ -536,11 +582,11 @@ public class BinaryTree {
     public int diameterBT(Node root) {
         if (root == null)
             return 0;
-        // get the height of left and right sub-trees
+        // get the height of left and right subtrees
 
         int lh = heightTree(root.left);
         int rh = heightTree(root.right);
-        // get the diameter of left and right sub-trees
+        // get the diameter of left and right subtrees
         int ld = diameterBT(root.left);
         int rd = diameterBT(root.right);
 		 /* Return max of following three
@@ -552,30 +598,24 @@ public class BinaryTree {
         return Math.max(lh + rh + 1, Math.max(ld, rd));
     }
 
-    static int isBalancedRec(Node root) {
-
-        // Base case: Height of empty tree is zero
-        if (root == null)
-            return 0;
-
-        // Find Heights of left and right subtrees
-        int lHeight = isBalancedRec(root.left);
-        int rHeight = isBalancedRec(root.right);
-
-        // If either of the subtrees are unbalanced or the absolute difference
-        // of their heights is greater than 1, return -1
-        if (lHeight == -1 || rHeight == -1 || Math.abs(lHeight - rHeight) > 1)
-            return -1;
-
-        // Return the height of the tree
-        return Math.max(lHeight, rHeight) + 1;
+    public boolean isBalanced(Node root) {
+        return isBalancedDfs(root)[0] == 1;
     }
 
-    // Function to check if the tree is height balanced
-    static boolean isBalanced(Node root) {
-        return isBalancedRec(root) > 0;
-    }
+    private int[] isBalancedDfs(Node root) {
+        if (root == null) {
+            return new int[]{1, 0};
+        }
 
+        int[] left = isBalancedDfs(root.left);
+        int[] right = isBalancedDfs(root.right);
+
+        boolean balanced = (left[0] == 1 && right[0] == 1) &&
+                (Math.abs(left[1] - right[1]) <= 1);
+        int height = 1 + Math.max(left[1], right[1]);
+
+        return new int[]{balanced ? 1 : 0, height};
+    }
     //DFS
     //O(p+q)
     private boolean isSameTree(Node p, Node q) {

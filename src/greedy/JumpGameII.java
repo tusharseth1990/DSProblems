@@ -25,4 +25,37 @@ public class JumpGameII {
         }
         return res;
     }
+     //2,3,1,1,4
+    public int minJumps(int[] arr) {
+        int n = arr.length;
+
+        if (n <= 1) {
+            return 0;
+        }
+
+        if (arr[0] == 0) {
+            return -1;
+        }
+
+        int j = 0;
+        int curr = 0;
+        int end = 0;
+
+        for (int i = 0; i < n; i++) {
+            end = Math.max(end, i + arr[i]);
+            if (i == curr) {
+                j++;
+                curr = end;
+
+                if (curr >= n - 1) {
+                    return j;
+                }
+
+            }
+            if(end <=i){
+                return -1;
+            }
+        }
+        return -1;
+    }
 }
