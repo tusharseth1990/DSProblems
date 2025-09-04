@@ -7,7 +7,7 @@ public class Provinces {
     //actual code
     static int numProvinces(ArrayList<ArrayList<Integer>> adj, int V) {
         ArrayList<ArrayList<Integer>> adjLs = getAdjLs(adj, V);
-        int vis[] = new int[V];
+        int[] vis = new int[V];
         int cnt = 0;
         for(int i = 0;i<V;i++) {
             if(vis[i] == 0) {
