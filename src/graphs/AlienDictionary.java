@@ -57,12 +57,12 @@ public class AlienDictionary {
         }
 
         List<Integer> topo = topoSort(K, adj);
-        String ans = "";
+        StringBuilder ans = new StringBuilder();
         for (int it : topo) {
-            ans = ans + (char)(it + (int)('a'));
+            ans.append((char) (it + (int) ('a')));
         }
 
-        return ans;
+        return ans.toString();
 
     }
 
