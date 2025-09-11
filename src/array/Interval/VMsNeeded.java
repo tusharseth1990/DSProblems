@@ -1,7 +1,8 @@
-package interviewQ;
+package array.Interval;
+
+import threads.Job;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 
 public class VMsNeeded {

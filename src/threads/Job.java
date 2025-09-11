@@ -1,4 +1,4 @@
-package interviewQ;
+package threads;
 
 public class Job {
     private String jobName;

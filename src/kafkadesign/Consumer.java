@@ -1,4 +1,4 @@
-package interviewQ.kafka;
+package kafkadesign;
 
 import java.util.List;
 import java.util.Queue;

@@ -1,4 +1,4 @@
-package interviewQ.kafka;
+package kafkadesign;
 
 public class Message {
 

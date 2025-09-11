@@ -1,6 +1,5 @@
-package interviewQ.kafka;
+package kafkadesign;
 
-import java.util.LinkedList;
 import java.util.Queue;
 
 public class Partition {

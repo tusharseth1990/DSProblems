@@ -62,10 +62,6 @@ public class TopK {
      * Space Complexity: O(n + k)
      */
     public int[] topKFrequentSol1(int[] nums, int k) {
-        // O(1) time
-        if (k == nums.length) {
-            return nums;
-        }
 
         // 1. build hash map : character and how often it appears
         // O(N) time

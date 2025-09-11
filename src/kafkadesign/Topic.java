@@ -1,4 +1,4 @@
-package interviewQ.kafka;
+package kafkadesign;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ public class Topic {
         }
     }
 
-     interviewQ.kafka.Partition getPartitionByKey(String key){
+     Partition getPartitionByKey(String key){
         int hash = key.hashCode();
         int index = hash % noOfPartitions;
         return partitions.get(index);

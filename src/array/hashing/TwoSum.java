@@ -16,6 +16,7 @@ import java.util.Map;
 // use hash map to instantly check for difference value, map will add index of last occurrence of a num, don’t use same element twice;
 
 public class TwoSum {
+
      int[] twoSum(int[] num, int target) {
 
          Map<Integer,Integer> hm = new HashMap<>();

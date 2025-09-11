@@ -14,8 +14,8 @@ public class Anagram {
         {
             return false;
         }
-        char ch1[]= s1.toLowerCase().toCharArray();
-        char ch2[]= s2.toLowerCase().toCharArray();
+        char[] ch1= s1.toLowerCase().toCharArray();
+        char[] ch2= s2.toLowerCase().toCharArray();
         Arrays.sort(ch1);
         Arrays.sort(ch2);
         for(int i=0;i< ch1.length;i++)
@@ -41,23 +41,23 @@ public class Anagram {
         char ch2[]=s2.toLowerCase().toCharArray();
         for(int i=0;i<ch1.length;i++)
         {
-            if(hm1.containsKey(ch1[i]))
-            {
-                hm1.put(ch1[i],hm1.get(ch1[i])+1);
-            }
-            else {
-                hm1.put(ch1[i], 1);
-            }
-//            hm1.put(ch1[i], hm1.getOrDefault(ch1[i],0)+1);
-            if(hm2.containsKey(ch2[i]))
-            {
-                hm2.put(ch2[i],hm2.get(ch2[i])+1);
-            }
-            else{
-                hm2.put(ch2[i],1);
-            }
+//            if(hm1.containsKey(ch1[i]))
+//            {
+//                hm1.put(ch1[i],hm1.get(ch1[i])+1);
+//            }
+//            else {
+//                hm1.put(ch1[i], 1);
+//            }
+            hm1.put(ch1[i], hm1.getOrDefault(ch1[i],0)+1);
+//            if(hm2.containsKey(ch2[i]))
+//            {
+//                hm2.put(ch2[i],hm2.get(ch2[i])+1);
+//            }
+//            else{
+//                hm2.put(ch2[i],1);
+//            }
 
-            // hm2.put(ch2[i],hm2.getOrDefault(ch2[i],0)+1);
+             hm2.put(ch2[i],hm2.getOrDefault(ch2[i],0)+1);
         }
         return hm1.equals(hm2);
     }

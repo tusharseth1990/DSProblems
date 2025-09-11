@@ -1,4 +1,4 @@
-package interviewQ;
+package heap;
 //[1,2,2,3,3,3,4,4,4,4]
 //
 //top 2 frequent number
