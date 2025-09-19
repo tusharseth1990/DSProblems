@@ -37,8 +37,8 @@ public class Anagram {
         }
         HashMap<Character,Integer> hm1= new HashMap<>();
         HashMap<Character,Integer> hm2= new HashMap<>();
-        char ch1[]=s1.toLowerCase().toCharArray();
-        char ch2[]=s2.toLowerCase().toCharArray();
+        char[] ch1=s1.toLowerCase().toCharArray();
+        char[] ch2=s2.toLowerCase().toCharArray();
         for(int i=0;i<ch1.length;i++)
         {
 //            if(hm1.containsKey(ch1[i]))

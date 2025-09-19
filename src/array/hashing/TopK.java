@@ -22,11 +22,13 @@ public class TopK {
 
         List<Integer>[] bucket = new ArrayList[nums.length + 1];
         Map<Integer, Integer> frequencyMap = new HashMap<>();
-
+        //freq map = number, count
         for (int n : nums) {
             frequencyMap.put(n, frequencyMap.getOrDefault(n, 0) + 1);
         }
-
+        // freq bucket
+        // [1,2,3,4]
+        // [{3},{2},{4,2},{}]
         for (int key : frequencyMap.keySet()) {
             int frequency = frequencyMap.get(key);
             if (bucket[frequency] == null) {
@@ -65,19 +67,20 @@ public class TopK {
 
         // 1. build hash map : character and how often it appears
         // O(N) time
+        // just a freq map
         Map<Integer, Integer> count = new HashMap<>();
         for (int n: nums) {
             count.put(n, count.getOrDefault(n, 0) + 1);
         }
-
+        // heap initiation only
         // init heap 'the less frequent element first'
         Queue<Integer> heap = new PriorityQueue<>(
                 Comparator.comparingInt(count::get));
 
 
-
         // 2. keep k top frequent elements in the heap
         // O(N log k) < O(N log N) time
+        //traverse in the freq map & store only top k elements in the heap otherwise poll it
         for (int n: count.keySet()) {
             heap.add(n);
             if (heap.size() > k) heap.poll();

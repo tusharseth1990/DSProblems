@@ -1,5 +1,7 @@
 package array.hashing;
-
+//anagram : grama na
+//grammar : grama mr
+// k=2
 import java.util.HashMap;
 import java.util.Map;
 

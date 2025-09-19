@@ -14,10 +14,10 @@ public class KDiffPairs {
     public static int findPairs(int[] nums, int k) {
         if (k < 0) return 0; // absolute difference can't be negative
 
-        //1 3 5
+
         Set<Integer> seen = new HashSet<>();
         Set<Integer> pairs = new HashSet<>();
-
+        // 3 5
         for (int num : nums) {
             if (seen.contains(num - k))
                 pairs.add(num - k);

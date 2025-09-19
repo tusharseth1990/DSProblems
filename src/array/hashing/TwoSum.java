@@ -13,12 +13,13 @@ import java.util.Map;
 //        Output: [0,1]
 //        Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
 
-// use hash map to instantly check for difference value, map will add index of last occurrence of a num, don’t use same element twice;
+// use hash map to instantly check for difference value, map will add index of last occurrence of a num,
+// don’t use same element twice;
 
 public class TwoSum {
 
      int[] twoSum(int[] num, int target) {
-
+    //key = number , value = index
          Map<Integer,Integer> hm = new HashMap<>();
          for (int i = 0; i < num.length; i++) {
              int compliment = target - num[i];
