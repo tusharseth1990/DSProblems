@@ -17,22 +17,19 @@ public class KLargestStream {
 
     public KLargestStream(int k, int[] nums) {
         this.k = k;
-        minHeap = new PriorityQueue<>();
-
-        for (int num: nums) {
-            minHeap.add(num);
+        this.minHeap = new PriorityQueue<>();
+        for (int num : nums) {
+            minHeap.offer(num);
+            if (minHeap.size() > k) {
+                minHeap.poll();
+            }
         }
-
     }
 
     public int add(int val) {
-        // Add to our minHeap if we haven't processed k elements yet
-        // or if val is greater than the top element (the k-th largest)
-        if (minHeap.size() < k || minHeap.peek() < val) {
-            minHeap.add(val);
-            if (minHeap.size() > k) {
-                minHeap.remove();
-            }
+        minHeap.offer(val);
+        if (minHeap.size() > k) {
+            minHeap.poll();
         }
         return minHeap.peek();
     }
