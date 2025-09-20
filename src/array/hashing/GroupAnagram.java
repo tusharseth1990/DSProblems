@@ -8,7 +8,7 @@ public class GroupAnagram {
 
     //time complexities : NKlogK
     //space complexities: NK
-
+    // "aet":["ate","eat","tea"]
     List<List<String>> groupAnagrams(String[] str) {
 
         if (str.length == 0) return new ArrayList<>();

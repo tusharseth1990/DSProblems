@@ -14,6 +14,8 @@ package array.binarysearch;
 import java.util.Arrays;
 
 //log(max(p))*p
+
+//[]
 public class KokoEatingBanana {
 //m * n
     public int minEatingSpeedKoKo(int[] piles, int h) {
@@ -62,7 +64,7 @@ public class KokoEatingBanana {
 
             // Check if middle is a workable speed, and cut the search space by half.
             if (hourSpent <= h) {
-                right = middle;
+                right = middle - 1;
             } else {
                 left = middle + 1;
             }
