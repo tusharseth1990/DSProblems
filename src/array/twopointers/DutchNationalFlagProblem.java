@@ -4,25 +4,23 @@ public class DutchNationalFlagProblem {
     //logic understanding
     //a[1..Lo-1] zeroes (red)
     //a[Lo..Mid-1] ones (white)
-    //a[Mid..Hi] unknown
+    //a[Mid..Hi] unknown //0//1//2 any no.
     //a[Hi+1..N] twos (blue)
     //if 0: swap low & mid, increase low & mid
     //if 1: inc mid
     //if 2: swap mid & high, decrement high
 
-    static void sort(int arr[],int n)
+    static void sort(int[] arr,int n)
     {
         int lo=0;
         int hi=arr.length-1;
-        int mid=0,temp=0;
+        int mid=0;
         while(mid<=hi)
         {
             switch(arr[mid])
             {
                 case 0:{
-                    temp=arr[mid];
-                    arr[mid]=arr[lo];
-                    arr[lo]=temp;
+                    swap(arr, mid, lo);
                     lo++;
                     mid++;
                     break;
@@ -32,14 +30,19 @@ public class DutchNationalFlagProblem {
                     break;
                 }
                 case 2:{
-                    temp=arr[mid];
-                    arr[mid]=arr[hi];
-                    arr[hi]=temp;
+                    swap(arr, mid, hi);
                     hi--;
                     break;
                 }
             }
         }
+    }
+
+    private static void swap(int[] arr, int mid, int lo) {
+        int temp;
+        temp = arr[mid];
+        arr[mid] = arr[lo];
+        arr[lo] = temp;
     }
 
     static void printArray(int arr[], int arr_size)
