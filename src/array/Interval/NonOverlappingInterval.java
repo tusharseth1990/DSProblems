@@ -6,6 +6,11 @@ import java.util.Comparator;
 public class NonOverlappingInterval {
 //Input: intervals = [[1,2],[2,4],[1,4]]
     //sorted  intervals = [[1,2],[1,4],[2,4]]
+    //take prevEnd temp first interval end value
+    //now traverse from 2nd interval
+    //if start value of interval > prevEnd -> just change the prevEnd and move to next element
+    //else if it collision // add the interval which is ending first since which is ending later can collide with
+    //other intervals and we need to find min. intervals
 //Output: 1
     public int eraseOverlapIntervalsNCSol(int[][] intervals) {
         //Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
