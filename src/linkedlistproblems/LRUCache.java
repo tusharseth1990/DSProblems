@@ -74,7 +74,7 @@ class LRUCache {
         insert(cache.get(key));
 
         if (cache.size() > capacity) {
-            // remove from the list and delte the LRU from the hashmap
+            // remove from the list and delete the LRU from the hashmap
             Node lru = this.left.next;
             remove(lru);
             cache.remove(lru.key);
@@ -82,6 +82,7 @@ class LRUCache {
     }
 
     // remove node from list
+    //removes from the front
     //Removes a node from the doubly linked list by updating its neighbors' pointers.
     public void remove(Node node) {
         Node prev = node.prev;
@@ -92,6 +93,7 @@ class LRUCache {
     }
 
     // insert node at right
+    //insert at end
     //Inserts a node at the most recently used position (before right).
     public void insert(Node node) {
         Node prev = this.right.prev;

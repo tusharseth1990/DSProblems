@@ -208,7 +208,9 @@ public class LinkedList {
 	        } 
 	  
 	        return false; 
-	    } 
+	    }
+
+        // Floyd's Cycle-Finding Algorithm
 	     void detectLoop() 
 	     { 
 	         Node slow_p = head, fast_p = head; 

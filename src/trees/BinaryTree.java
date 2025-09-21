@@ -493,6 +493,12 @@ public class BinaryTree {
     public Node invertTree(Node root) {
         if (root == null) return null;
         //swap logic lef and right child
+        /*
+        c=a
+        a=b
+        b=c
+         */
+
         Node temp = root.left;
         root.left = root.right;
         root.right = temp;
@@ -695,6 +701,11 @@ public class BinaryTree {
     public boolean isValidBST(Node root) {
         return validate(root, null, null);
     }
+    //The idea is to use inorder traversal of a binary search tree, in which the output
+    // values are sorted in ascending order.
+    // After generating the inorder traversal of the given binary tree,
+    // we can check if the values are sorted or not.
+
      //dfs     1 < 2 < 3 < 4 < 5
     // make sure with root also   2 < 3 && 3 < 4
 
